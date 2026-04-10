@@ -1,0 +1,25 @@
+@charset "UTF-8"
+
+*{margin: 0; padding: 0;}
+
+ul{margin: 0;}
+li{list-style: none;}
+a{text-decoration: none;  color: #2A2017;}
+
+body{font-family: 'Pretendard','맑은 고딕','sans-serif'; background-color: #F5EFE9;}
+
+.header{width: 1400px; margin: 0 auto; padding-top: 40px;}
+
+.header .header_top{width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;}
+.header .header_top .header_lang{padding-left: 60px;}
+.header .header_top .header_lang a{ font-size: 16px;}
+
+.header_my{display: flex; justify-content: end;}
+.header_my a{padding: 0 60px}
+
+.header .header_logo{margin: 0 auto; display: flex; justify-content: center;}
+
+.header .nav{margin: 0 auto; padding: 30px 60px;}
+.header .nav ul{display: flex; justify-content: space-between; padding: 0 89px;}
+.header .nav ul li{}
+.header .nav ul li a{font-size: 20px;}
