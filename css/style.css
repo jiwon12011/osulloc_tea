@@ -1,4 +1,4 @@
-@charset "UTF-8"
+@charset "UTF-8";
 
 *{margin: 0; padding: 0;}
 
@@ -9,7 +9,7 @@ a{text-decoration: none;  color: #2A2017;}
 body{ margin: 0;
     font-family: 'Pretendard','맑은 고딕','sans-serif'; background-color: #F5EFE9;}
 
-.header{width: 1400px; margin: 0 auto;}
+.header{width: 100%; margin: 0 auto;}
 
 .header .header_top{width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding-top: 30px;}
 .header .header_top .header_lang a{font-size: 16px;}
@@ -85,18 +85,411 @@ margin-bottom: 30px; font-weight: lighter;}
     border-radius: 10px; /* 모서리는 여전히 둥글게 유지 */
 }
 .mySwiper .swiper-button-next, .mySwiper .swiper-button-prev{ color: #F5EFE9;}
+.mySwiper .swiper-slide img{width: 100%; height: 100%; object-fit: cover;}
 
 
 
-.container{}
-.container .content1{margin: 0 auto; padding-top: 120px;
-    height: 974px; display: flex; justify-content: center; gap: 60px;}
+.container{margin: 0 auto;}
+.container .content1{margin: 0 auto; padding: 120px 0 125px 0; 
+    height: 729px; display: flex; justify-content: center; gap: 60px;}
 .container .content1 .left{display: flex; ; flex-direction: column; justify-content: space-between; height: 729px;}
-.container .content1 .left .textbox{}
 .container .content1 .left .textbox_1{font-weight: 200; font-size: 16px;}
 .container .content1 .left .textbox_2{padding: 15px 0 30px;  font-size: 36px; }
 .container .content1 .left .textbox_2 span{font-weight: 600;}
 .container .content1 .left .textbox_3{
     padding: 10px 0 0 0; font-size: 20px; font-weight: 200;}
-.container .content1 .left img{}
-.container .content1 .right{}
+
+
+/* 1. 전체 속도를 0.8초로 변경 */
+.container .content1 .left .textbox,
+.container .content1 .left img,
+.container .content1 .right img {
+    opacity: 0;
+    transform: translateY(120px);
+    transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out보다 조금 더 쫀득한 느낌의 효과 */
+}
+
+/* 활성화 상태 (변경 없음) */
+.container .content1.show .left .textbox,
+.container .content1.show .left img,
+.container .content1.show .right img {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* 2. 나타나는 순서(딜레이)를 더 촘촘하게 변경 */
+.container .content1.show .left img { 
+    transition-delay: 0.3s; /* 0.3s에서 줄임 */
+}
+.container .content1.show .right img { 
+    transition-delay: 0.3s; /* 0.6s에서 줄임 */
+}
+
+
+
+.content2{background: url(../img/teacourse_bg.png) no-repeat center center; 
+    background-size: cover;
+    width: 100%; height: 795px;
+color: #fff; text-align: center; }
+.content2 .teacourse{margin: 0 auto; padding: 60px 0 15px; display: block; text-align:center;
+    font-size: 32px; color: #fff; font-weight: 400;}
+.content2 .teacourse span{
+    display: block; padding-top: 15px;
+    font-size: 20px; font-weight: 100;}
+.content2 ul{ padding: 60px 0 0;
+    margin: 0 auto; gap: 60px;
+    max-width: 1229px; height: 514px; display: flex; flex-wrap: wrap;}
+.content2 ul li
+{width: 584px; height: 227px; 
+background: rgba(170,170, 170, 0.3);
+text-align: left;
+display: flex; flex-direction: column; justify-content: center;
+transition: all 0.5s ease; backface-visibility: hidden;}
+
+
+.content2 ul li:hover {
+    transform: translateY(-8px); /* 위로 은은하게 이동 */
+    background: rgba(170, 170, 170, 0.4); /* 배경색을 살짝만 더 진하게 */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* 부드러운 그림자로 입체감 */
+    cursor: pointer;
+}
+
+.content2 ul li .box_top{padding: 0 64px 40px;
+    display: flex; justify-content: space-between;}
+.content2 ul li .box_top h2{font-size: 20px; color: #FFFDC3; font-weight: 200; margin: 0;}
+.content2 ul li .box_top h2 span{color: #fff;
+    margin-top: 5px; font-size: 28px; font-weight: 400;}
+.content2 ul li .box_top span{display: flex; align-items: baseline;
+     font-size: 16px; font-weight: 200; display: flex;}
+.content2 ul li .box_top span div{
+    font-size: 28px; padding-right: 3px; font-weight: 400;}
+.content2 ul li .box_bottom{padding: 0 64px;}
+.content2 ul li .box_bottom p{margin: 0; font-size: 20px;
+font-weight: lighter;}
+.content2 ul li .box_bottom .mini{padding-top: 10px; font-size: 16px; font-weight: lighter; color: #C7C7C7;}
+
+.content3 .container{padding: 120px 0;
+    height: 480px; width: 891px; display: flex; justify-content: space-between; align-items: center;}
+.content3 .container .map{width: 480px; height: 480px;}
+.content3 .container .textbox{text-align: center;
+    display: flex; flex-direction: column; gap: 30px;}
+.content3 .container .textbox span{font-size: 16px; font-weight: 200;}
+.content3 .container .textbox h2{ text-align: center;
+    font-size: 36px; font-weight: 300;}
+.content3 .container .textbox .guidebox{
+    width: 200px;height: 45px; border: 1px solid #2A2017; gap: 10px;
+    display: flex; justify-content: center; align-items: center;}
+.content3 .container .textbox .guidebox span{font-size: 16px; font-weight: 300;}
+.content3 .container .textbox .guidebox {
+    width: 200px;
+    height: 45px; 
+    border: 1px solid #2A2017; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 살짝 튕기는듯한 고급스러운 효과 */
+    background-color: transparent;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+/* 1. 마우스를 올렸을 때 버튼 확대 및 배경색 변화 */
+.content3 .container .textbox .guidebox:hover {
+    transform: scale(1.03); 
+    background-color: #2A2017; /* 배경색을 진한 갈색으로 */
+}
+
+/* 2. 호버 시 내부 텍스트 색상 변화 */
+.content3 .container .textbox .guidebox:hover span {
+    color: #F5EFE9; /* 배경색과 대비되는 밝은 색으로 */
+}
+
+/* 3. 호버 시 화살표 이미지 색상 변화 및 오른쪽 이동 */
+.content3 .container .textbox .guidebox:hover img {
+    filter: invert(1); /* 검은색 화살표를 흰색으로 반전 */
+    transform: translateX(5px); /* 오른쪽으로 살짝 이동 */
+    transition: all 0.3s ease;
+}
+
+/* 가이드 박스 내부의 a 태그 설정 (클릭 영역 확보) */
+.content3 .container .textbox .guidebox a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 100%;
+    color: inherit; /* 부모의 색상을 따라가도록 */
+}
+
+
+
+.content4{background:#596038;}
+.content4 .container{padding: 90px 0 95px;display: flex; flex-direction: column;
+text-align: center; align-items: center;}
+.content4 .c4_textbox{color: #F5EFE9; padding-bottom: 36px;}
+.content4 .c4_textbox span{font-size: 20px; font-weight: 100;}
+.content4 .c4_textbox h2{padding-top: 15px; font-size: 32px; font-weight: 300;}
+.content4 .c4_shop{display: flex; gap: 90px;}
+.content4 .c4_shop .shopbox{display: flex; gap: 60px; text-align: left;}
+.content4 .c4_shop .shopbox a{color: #F5EFE9;}
+.content4 .c4_shop .shopbox a h3{padding-top: 30px; font-size: 22px; font-weight: 200;}
+.content4 .c4_shop .shopbox a span{ display: block;padding-top: 20px; font-size: 19px; font-weight: 200;}
+
+
+footer .footer_container{width: 1280px; margin: 0 auto;}
+footer .footer_box{display: flex; padding: 96px 0; gap: 90px; 
+   align-items: center; justify-content: center;}
+footer .textbox{}
+footer .f_logo{}
+footer .textbox .topbox{display: flex; gap: 30px; padding-bottom: 60px;}
+footer .textbox .topbox a{}
+footer .textbox .bottombox{}
+footer .textbox .bottombox .top{display: flex; flex-direction: row;
+gap: 30px;}
+footer .textbox .bottombox .top span{margin-bottom: 30px;}
+
+
+
+
+
+
+
+
+
+
+/* 1. 지도를 감싸는 부모 설정 */
+.map_wrapper {
+    position: relative; 
+    width: 480px;
+    height: 480px;
+}
+
+/* 2. 포인트 영역 (평소에는 투명하지만 마우스 반응은 함) */
+.point {
+    position: absolute;
+    width: 80px;  /* 마우스를 올리기 쉽도록 영역을 넓게 잡음 */
+    height: 80px;
+    background-color: transparent; /* 평소엔 투명 */
+    border-radius: 50%;
+    z-index: 10;
+    cursor: pointer;
+    margin-top: -15px; 
+    margin-left: -15px;
+}
+
+/* 3. 라벨 스타일 (평소엔 숨김) */
+.point .label {
+    position: absolute;
+    top: -15px; /* 시작 위치 */
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(42, 32, 23, 0.7); /* 오설록 다크 브라운 */
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 13px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: all 0.4s ease; /* 스르륵 나타나는 효과 */
+    pointer-events: none;
+}
+
+/* 4. 마우스를 올렸을 때(Hover) 라벨 등장 */
+.point:hover .label {
+    opacity: 1;
+    top: -10px; /* 아래에서 위로 살짝 올라오며 등장 */
+}
+
+
+/* --- 포인트 위치 (잡아두신 좌표 그대로 적용) --- */
+.p1 { top: 27%; left: 28%; }    /* 티스톤 */
+.p2 { top: 42%; left: 11%; }    /* 티뮤지엄 */
+.p3 { top: 17%; left: 59%; }    /* 이니스프리 제주하우스 */
+.p4 { top: 18%; left: 11%; }    /* 티테라스 */
+.p5 { top: 46%; left: 29%; }    /* 오설록 정원 */
+.p6 { top: 41%; left: 53%; }    /* 오설록 서광차밭 */
+.p7 { top: 58%; left: 83%; }    /* 오설록 농장 */  
+
+.content4 .c4_shop a {
+    display: block;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 고급스러운 가감속 */
+}
+
+.content4 .c4_shop a:hover {
+    transform: translateY(-8px); /* 위로 슥- 떠오름 */
+}
+
+/* 이미지에 은은한 그림자 추가 */
+.content4 .c4_shop a img {
+    transition: box-shadow 0.4s ease;
+    border-radius: 4px; /* 아주 살짝만 둥글게 */
+}
+
+.content4 .c4_shop a:hover img {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* 부드럽고 깊은 그림자 */
+}
+
+
+
+
+
+/* 서브페이지 */
+
+.sub_hero {
+  margin: 0 auto; width: 100%;
+}
+.sub_hero figure img{
+  width: 100%; display: block; object-fit: cover;
+}
+.sub_content {
+  width: 1400px; margin: 0 auto;
+}
+
+
+/* --- 서브 네비게이션 영역 (중복 제거 및 통합) --- */
+.sub_content .submenu {
+    margin: 0 auto; 
+    width: 880px;           /* 사용자 수치 유지 */
+    padding-top: 60px;
+    border-bottom: 1px solid #ddd; /* 밑바탕 연한 선 */
+}
+
+.sub_content .submenu ul {
+    display: flex; 
+    justify-content: center; 
+    gap: 128px;            /* 사용자 수치 유지 */
+}
+
+.sub_content .submenu ul li {
+    font-size: 28px;       /* 사용자 수치 유지 */
+    font-weight: 400;
+}
+
+/* 1. 글자색과 기준점 설정 */
+.sub_content .submenu ul li a {
+    display: inline-block; 
+    position: relative;    /* 밑줄의 기준점 */
+    padding-bottom: 15px;  /* 글자와 선 사이 간격 */
+    color: #999;           /* 기본은 흐리게 */
+    transition: color 0.3s ease;
+}
+
+/* 2. 공통 밑줄 스타일 (가짜 요소 ::after) */
+.sub_content .submenu ul li a::after {
+    content: "";
+    position: absolute;
+    bottom: -1px;          /* border-bottom 선 위에 딱 붙임 */
+    left: 50%;             /* 가운데 시작 */
+    width: 0;              /* 처음엔 너비 0 */
+    height: 2px;           /* 선 두께 */
+    background-color: #2A2017;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* 쫀득한 모션 */
+    transform: translateX(-50%);
+}
+
+/* 3. 호버(Hover) 시: 글자색 진해지고 밑줄 100%로 펴짐 */
+.sub_content .submenu ul li:hover a {
+    color: #2A2017;
+}
+.sub_content .submenu ul li:hover a::after {
+    width: 100%;           /* 글자 너비만큼 꽉 참 */
+}
+
+/* 4. 활성화된 메뉴(on): 항상 진한 글자와 밑줄 유지 */
+.sub_content .submenu ul li.on a {
+    color: #2A2017;
+    font-weight: 600;
+}
+/* 1. 기본 상태: 현재 페이지(on)에만 줄이 보임 */
+.sub_content .submenu ul li.on a::after {
+    width: 100%;
+}
+
+/* 🔥 2. 마법의 코드: 메뉴 전체(ul)에 마우스가 올라가면, 
+   일단 현재 페이지(on)의 줄을 0으로 만들어 숨깁니다. */
+.sub_content .submenu ul:hover li.on a::after {
+    width: 0;
+}
+
+/* 3. 그리고 나서, 실제로 마우스가 올라간(hover) 그 메뉴에만 
+   다시 줄이 100%로 쫙 펴지게 합니다. */
+.sub_content .submenu ul li:hover a::after {
+    width: 100% !important; /* on의 0보다 우선순위를 높이기 위해 !important 추가 */
+}
+
+/* --- 카드 호버 모션은 그대로 유지 --- */
+.intro_content {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.intro_content:hover {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+}
+
+.sub_content .sub_intro {
+  margin: 90px 0 180px; width: 1400px;
+}
+.sub_content .sub_intro .intro_text {
+display: flex; flex-direction: column; 
+}
+.sub_content .sub_intro .intro_text h2 {
+  font-size: 36px; font-weight: 500;
+}
+.sub_content .sub_intro .intro_text span {
+  font-size: 18px; color: #77665B; font-weight: 300; padding: 15px 0 10px;
+}
+.sub_content .sub_intro .intro_text a {
+  font-size: 20px; color: #814A47; font-weight: 400;
+}
+.sub_content .sub_intro .intro_content {
+    padding-top: 90px;
+  display: flex; justify-content: space-between;
+}
+
+
+.sub_content .sub_intro .intro_content .innertext {
+  width: 715px; display: flex; flex-direction: column; justify-content: center;
+}
+.sub_content .sub_intro .intro_content .innertext h3 {
+  color: #596038; font-size: 20px; font-weight: 500;
+}
+.sub_content .sub_intro .intro_content .innertext h2 {
+    padding: 15px 0 30px;
+  display: flex; justify-content: space-between; font-size: 28px; font-weight: 400;
+  align-items: center;
+}
+.sub_content .sub_intro .intro_content .innertext h2 span {
+  display: flex; font-size: 28px; font-weight: 400;  align-items: flex-end; gap: 3px;
+}
+.sub_content .sub_intro .intro_content .innertext h2 span p {
+  font-size: 16px; font-weight: 300;
+}
+.sub_content .sub_intro .intro_content .innertext>p {
+  font-size: 20px; font-weight: 300; padding-bottom: 30px;
+}
+.sub_content .sub_intro .intro_content .innertext .key{
+    display: flex; gap: 10px;
+}
+.sub_content .sub_intro .intro_content .innertext>span {
+  font-size: 16px; font-weight: 300; color: #7C8260; margin-top: 30px;
+}
+.sub_content .sub_intro .intro_content .innertext .minitext {
+  font-size: 16px; font-weight: 300; color: #7c8260;
+}
+
+
+.sub_content .submenu ul li {
+    position: relative;
+}
+
+
+.intro_content {
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.intro_content:hover {
+    transform: translateY(-10px); /* 위로 15px 들림 */
+    /* 아래쪽에 은은한 그림자 추가 */
+    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+}
