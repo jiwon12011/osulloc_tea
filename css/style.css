@@ -366,7 +366,6 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
 .sub_content .submenu ul li {
     font-size: 28px;       /* 사용자 수치 유지 */
     font-weight: 400;
-    white-space: nowrap;
 }
 
 /* 1. 글자색과 기준점 설정 */
@@ -579,6 +578,9 @@ display: flex; flex-direction: column;
 }
 .sub_content .submenu.submenu_wide ul {
     gap: 70px;
+}
+.sub_content .submenu.submenu_wide ul li {
+    white-space: nowrap;
 }
 .sub_hero_text p {
     font-size: 16px;
