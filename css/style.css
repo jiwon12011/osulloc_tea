@@ -339,10 +339,13 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
 /* 서브페이지 */
 
 .sub_hero {
-  margin: 0 auto; width: 100%;
+  width: 100%; height: 480px; overflow: hidden;
+}
+.sub_hero figure {
+  height: 100%;
 }
 .sub_hero figure img{
-  width: 100%; display: block; object-fit: cover;
+  width: 100%; height: 100%; display: block; object-fit: cover;
 }
 .sub_content {
   max-width: 1400px; margin: 0 auto; padding: 0 40px; box-sizing: border-box;
