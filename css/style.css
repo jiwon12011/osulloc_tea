@@ -205,10 +205,12 @@ font-weight: lighter;}
 }
 
 /* 3. 호버 시 화살표 이미지 색상 변화 및 오른쪽 이동 */
+.content3 .container .textbox .guidebox img {
+    transition: all 0.3s ease;
+}
 .content3 .container .textbox .guidebox:hover img {
     filter: invert(1); /* 검은색 화살표를 흰색으로 반전 */
     transform: translateX(5px); /* 오른쪽으로 살짝 이동 */
-    transition: all 0.3s ease;
 }
 
 /* 가이드 박스 내부의 a 태그 설정 (클릭 영역 확보) */
@@ -484,15 +486,6 @@ display: flex; flex-direction: column;
 }
 
 
-.intro_content {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.intro_content:hover {
-    transform: translateY(-10px); /* 위로 15px 들림 */
-    /* 아래쪽에 은은한 그림자 추가 */
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
-}
 
 
 /* =============================================
@@ -511,6 +504,15 @@ display: flex; flex-direction: column;
     text-shadow: 2px 2px 10px rgba(0,0,0,0.4);
     pointer-events: none;
     white-space: nowrap;
+    z-index: 2;
+}
+
+/* 서브메뉴 탭이 많거나 텍스트가 긴 페이지용 와이드 변형 */
+.sub_content .submenu.submenu_wide {
+    width: 1200px;
+}
+.sub_content .submenu.submenu_wide ul {
+    gap: 70px;
 }
 .sub_hero_text p {
     font-size: 16px;
