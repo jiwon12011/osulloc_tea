@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-*{margin: 0; padding: 0;}
+*{margin: 0; padding: 0; box-sizing: border-box;}
 
 ul{margin: 0;}
 li{list-style: none;}
@@ -11,7 +11,7 @@ body{ margin: 0;
 
 .header{width: 100%; margin: 0 auto;}
 
-.header .header_top{width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding-top: 30px;}
+.header .header_top{max-width: 1400px; margin: 0 auto; padding: 30px 80px 0; display: flex; align-items: center; justify-content: space-between;}
 .header .header_top .header_lang a{font-size: 16px;}
 .header .header_top .header_lang a img{padding-left: 6px;}
 
@@ -239,7 +239,7 @@ text-align: center; align-items: center;}
 .content4 .c4_shop .shopbox a span{ display: block;padding-top: 20px; font-size: 19px; font-weight: 200;}
 
 
-footer .footer_container{width: 1280px; margin: 0 auto;}
+footer .footer_container{max-width: 1400px; margin: 0 auto; padding: 0 80px;}
 footer .footer_box{display: flex; padding: 96px 0; gap: 90px; 
    align-items: center; justify-content: center;}
 footer .textbox{}
@@ -345,7 +345,7 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
   width: 100%; display: block; object-fit: cover;
 }
 .sub_content {
-  width: 1400px; margin: 0 auto;
+  max-width: 1400px; margin: 0 auto; padding: 0 80px;
 }
 
 
@@ -430,7 +430,7 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
 }
 
 .sub_content .sub_intro {
-  margin: 90px 0 180px; width: 1400px;
+  margin: 90px 0 180px; width: 100%;
 }
 .sub_content .sub_intro .intro_text {
 display: flex; flex-direction: column; 
@@ -599,8 +599,8 @@ display: flex; flex-direction: column;
    ============================================= */
 
 .brand_story {
-    padding: 90px 0 100px;
-    width: 1400px;
+    padding: 90px 80px 100px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 .brand_story .story_header {
@@ -696,7 +696,7 @@ display: flex; flex-direction: column;
     color: #F5EFE9;
     text-align: center;
 }
-.brand_mission .inner { width: 1400px; margin: 0 auto; }
+.brand_mission .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 .brand_mission .inner > p {
     font-size: 16px;
     font-weight: 200;
@@ -747,7 +747,7 @@ display: flex; flex-direction: column;
     padding: 100px 0 120px;
     background: #F5EFE9;
 }
-.brand_history .inner { width: 1400px; margin: 0 auto; }
+.brand_history .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 .brand_history .section_label {
     font-size: 16px;
     font-weight: 200;
@@ -862,8 +862,8 @@ display: flex; flex-direction: column;
 .product_section_header h2 span { font-weight: 600; }
 
 .product_featured {
-    padding: 90px 0 100px;
-    width: 1400px;
+    padding: 90px 80px 100px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 .product_featured .featured_banner {
@@ -946,7 +946,7 @@ display: flex; flex-direction: column;
     background: #F5EFE9;
     padding: 80px 0 120px;
 }
-.product_catalog .inner { width: 1400px; margin: 0 auto; }
+.product_catalog .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 
 .product_catalog .cat_tabs {
     display: flex;
@@ -1029,8 +1029,8 @@ display: flex; flex-direction: column;
    ============================================= */
 
 .community_notice {
-    padding: 90px 0 100px;
-    width: 1400px;
+    padding: 90px 80px 100px;
+    max-width: 1400px;
     margin: 0 auto;
 }
 .community_notice .notice_header {
@@ -1104,7 +1104,7 @@ display: flex; flex-direction: column;
     padding: 100px 0;
     color: #F5EFE9;
 }
-.community_gallery .inner { width: 1400px; margin: 0 auto; }
+.community_gallery .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 .community_gallery .gallery_header {
     text-align: center;
     margin-bottom: 60px;
@@ -1181,7 +1181,7 @@ display: flex; flex-direction: column;
     padding: 100px 0 120px;
     background: #F5EFE9;
 }
-.community_sns .inner { width: 1400px; margin: 0 auto; }
+.community_sns .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 .community_sns .sns_header {
     text-align: center;
     margin-bottom: 60px;
@@ -1292,7 +1292,7 @@ display: flex; flex-direction: column;
     padding: 100px 0 120px;
     background: #F5EFE9;
 }
-.community_stats .inner { width: 1400px; margin: 0 auto; }
+.community_stats .inner { max-width: 1400px; margin: 0 auto; padding: 0 80px; }
 .community_stats .stats_header {
     text-align: center;
     margin-bottom: 70px;
