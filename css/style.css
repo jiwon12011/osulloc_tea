@@ -560,17 +560,41 @@ display: flex; flex-direction: column;
     gap: 80px;
     align-items: flex-start;
 }
-.brand_story .story_columns .col_img {
-    width: 640px;
+.brand_story .story_columns .col_values {
+    width: 580px;
     flex-shrink: 0;
-    overflow: hidden;
+    border-top: 1px solid #2A2017;
 }
-.brand_story .story_columns .col_img img {
-    width: 100%;
-    display: block;
-    transition: transform 0.4s ease;
+.brand_story .val_item {
+    padding: 36px 0;
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 20px;
+    align-items: start;
+    transition: padding-left 0.3s ease;
 }
-.brand_story .story_columns .col_img:hover img { transform: scale(1.02); }
+.brand_story .val_item:hover { padding-left: 8px; }
+.brand_story .val_item .val_num {
+    font-size: 13px;
+    font-weight: 200;
+    color: #596038;
+    letter-spacing: 0.14em;
+    padding-top: 5px;
+}
+.brand_story .val_item .val_content h3 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #2A2017;
+    margin-bottom: 12px;
+    line-height: 1.4;
+}
+.brand_story .val_item .val_content p {
+    font-size: 16px;
+    font-weight: 300;
+    color: #77665B;
+    line-height: 1.75;
+}
 
 .brand_story .story_columns .col_text {
     flex: 1;
@@ -1095,6 +1119,7 @@ display: flex; flex-direction: column;
     text-align: center;
     margin-bottom: 60px;
 }
+/* ---- community_sns는 community_stats로 대체됨 ---- */
 .community_sns .sns_header p {
     font-size: 16px;
     font-weight: 200;
@@ -1150,4 +1175,115 @@ display: flex; flex-direction: column;
     font-weight: 300;
     color: #F5EFE9;
     line-height: 1.5;
+}
+
+/* =============================================
+   Product 피쳐드 배너 하이라이트 (사진 대체)
+   ============================================= */
+
+.product_featured .banner_highlights {
+    width: 540px;
+    flex-shrink: 0;
+    border-top: 1px solid #2A2017;
+}
+.product_featured .highlight_item {
+    padding: 32px 0;
+    border-bottom: 1px solid #ddd;
+    display: grid;
+    grid-template-columns: 48px 1fr;
+    gap: 0 20px;
+    align-items: start;
+    transition: padding-left 0.3s ease;
+}
+.product_featured .highlight_item:hover { padding-left: 8px; }
+.product_featured .highlight_item .h_num {
+    font-size: 13px;
+    font-weight: 200;
+    color: #596038;
+    letter-spacing: 0.14em;
+    padding-top: 5px;
+}
+.product_featured .highlight_item h3 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #2A2017;
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+.product_featured .highlight_item p {
+    font-size: 15px;
+    font-weight: 300;
+    color: #77665B;
+    line-height: 1.7;
+}
+
+/* =============================================
+   Community 통계/하이라이트 블록 (SNS 그리드 대체)
+   ============================================= */
+
+.community_stats {
+    padding: 100px 0 120px;
+    background: #F5EFE9;
+}
+.community_stats .inner { width: 1400px; margin: 0 auto; }
+.community_stats .stats_header {
+    text-align: center;
+    margin-bottom: 70px;
+}
+.community_stats .stats_header p {
+    font-size: 16px;
+    font-weight: 200;
+    color: #77665B;
+    letter-spacing: 0.12em;
+    margin-bottom: 14px;
+}
+.community_stats .stats_header h2 {
+    font-size: 36px;
+    font-weight: 300;
+    color: #2A2017;
+}
+.community_stats .stats_grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 2px solid #2A2017;
+    border-left: 1px solid #ddd;
+}
+.community_stats .stat_item {
+    padding: 56px 40px 50px;
+    border-right: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    transition: background 0.35s ease;
+}
+.community_stats .stat_item:hover { background: rgba(89,96,56,0.05); }
+.community_stats .stat_item .stat_label {
+    font-size: 13px;
+    font-weight: 200;
+    color: #77665B;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+}
+.community_stats .stat_item .stat_num {
+    font-size: 56px;
+    font-weight: 100;
+    color: #2A2017;
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.community_stats .stat_item .stat_unit {
+    font-size: 15px;
+    font-weight: 300;
+    color: #596038;
+    margin-bottom: 28px;
+}
+.community_stats .stat_item .stat_desc {
+    font-size: 15px;
+    font-weight: 300;
+    color: #77665B;
+    line-height: 1.7;
+    padding-top: 24px;
+    border-top: 1px solid #e8e3dc;
+    margin-top: auto;
 }
