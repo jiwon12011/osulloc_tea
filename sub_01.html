@@ -34,10 +34,10 @@
         </div>
         <div class="nav">
             <ul>
-                <li><a href="#">Brand</a></li>
-                <li><a href="#">Product</a></li>
+                <li><a href="brand.html">Brand</a></li>
+                <li><a href="product.html">Product</a></li>
                 <li><a href="sub_01.html">Program</a></li>
-                <li><a href="#">Community</a></li>
+                <li><a href="community.html">Community</a></li>
             </ul>
         </div>
     </header>
@@ -200,7 +200,7 @@
                 });
             }, { threshold: 0.2 }); // 섹션의 20%가 보일 때 실행
 
-            observer.observe(content1);
+            if (content1) observer.observe(content1);
         });
     </script>
 </body>
