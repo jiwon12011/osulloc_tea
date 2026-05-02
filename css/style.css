@@ -505,6 +505,16 @@ display: flex; flex-direction: column;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.page_hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 16, 12, 0.48);
+    z-index: 0;
 }
 .page_hero .hero_deco {
     position: absolute;
@@ -518,11 +528,12 @@ display: flex; flex-direction: column;
     left: 50%;
     transform: translate(-50%, -48%);
     letter-spacing: -0.02em;
+    z-index: 1;
 }
 .page_hero_inner {
     text-align: center;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -551,16 +562,19 @@ display: flex; flex-direction: column;
 /* Brand: 다크 브라운 */
 .page_hero_brand {
     background-color: #2A2017;
+    background-image: url("../img/page_hero_brand.png");
     color: #F5EFE9;
 }
 /* Product: 세이지 그린 */
 .page_hero_product {
     background-color: #596038;
+    background-image: url("../img/page_hero_product.png");
     color: #F5EFE9;
 }
 /* Community: 번트 로즈 */
 .page_hero_community {
     background-color: #814A47;
+    background-image: url("../img/page_hero_community.png");
     color: #F5EFE9;
 }
 
