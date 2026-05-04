@@ -51,17 +51,17 @@
     </div>
 
     <div class="sub_content">
-        <div class="submenu submenu_wide">
+        <div class="submenu submenu_wide" data-tab-group="brand">
             <ul>
-                <li class="on"><a href="#">브랜드 스토리</a></li>
-                <li><a href="#">철학과 가치</a></li>
-                <li><a href="#">브랜드 히스토리</a></li>
-                <li><a href="#">인증 및 수상</a></li>
+                <li class="on"><a href="#" data-tab-target="story">브랜드 스토리</a></li>
+                <li><a href="#" data-tab-target="philosophy">철학과 가치</a></li>
+                <li><a href="#" data-tab-target="history">브랜드 히스토리</a></li>
+                <li><a href="#" data-tab-target="awards">인증 및 수상</a></li>
             </ul>
         </div>
 
         <!-- 섹션 1: 브랜드 스토리 -->
-        <div class="brand_story">
+        <div class="brand_story tab_panel is_active" data-tab-panel="brand" data-tab-name="story">
             <div class="story_header">
                 <p>BRAND STORY</p>
                 <h2>제주의 <span>자연</span>이 빚어낸<br>한 잔의 진심</h2>
@@ -98,10 +98,34 @@
                 </div>
             </div>
         </div>
+
+        <div class="brand_mission tab_panel" data-tab-panel="brand" data-tab-name="philosophy">
+            <div class="inner">
+                <p>PHILOSOPHY & VALUE</p>
+                <h2>차 한 잔에 담는 오설록의 기준</h2>
+                <div class="values_grid">
+                    <div class="value_card">
+                        <span class="icon">01</span>
+                        <h3>제주다움</h3>
+                        <p>제주의 토양, 바람, 물이 만든 차 본연의 풍미를 지키며 지역의 시간을 브랜드 경험으로 전합니다.</p>
+                    </div>
+                    <div class="value_card">
+                        <span class="icon">02</span>
+                        <h3>지속 가능성</h3>
+                        <p>유기농 재배와 순환형 생산 방식을 통해 자연과 사람이 함께 지속되는 차 문화를 만듭니다.</p>
+                    </div>
+                    <div class="value_card">
+                        <span class="icon">03</span>
+                        <h3>현대적 다도</h3>
+                        <p>전통의 깊이를 오늘의 감각으로 해석해 누구나 편안하게 차를 즐길 수 있는 경험을 설계합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- 섹션 2: 브랜드 히스토리 타임라인 -->
-    <div class="brand_history">
+    <div class="brand_history tab_panel" data-tab-panel="brand" data-tab-name="history">
         <div class="inner">
             <p class="section_label">BRAND HISTORY</p>
             <h2 class="section_title">오설록의 발자취</h2>
@@ -143,6 +167,35 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="brand_history brand_awards tab_panel" data-tab-panel="brand" data-tab-name="awards">
+        <div class="inner">
+            <p class="section_label">CERTIFICATION & AWARDS</p>
+            <h2 class="section_title">신뢰로 쌓아온 기록</h2>
+            <div class="award_grid">
+                <div class="award_item">
+                    <span class="award_year">Organic</span>
+                    <h3>유기농 차밭 운영</h3>
+                    <p>제주 서광차밭을 중심으로 친환경 재배 원칙을 지키며 깨끗한 원료 생산 기준을 유지합니다.</p>
+                </div>
+                <div class="award_item">
+                    <span class="award_year">Quality</span>
+                    <h3>자체 품질 관리</h3>
+                    <p>수확, 덖음, 블렌딩, 포장까지 단계별 품질 검수를 통해 안정적인 향미를 제공합니다.</p>
+                </div>
+                <div class="award_item">
+                    <span class="award_year">Museum</span>
+                    <h3>차 문화 공간 평가</h3>
+                    <p>티뮤지엄과 티스톤을 통해 차를 마시는 시간을 문화 경험으로 확장한 공간 가치를 인정받았습니다.</p>
+                </div>
+                <div class="award_item">
+                    <span class="award_year">Jeju</span>
+                    <h3>지역 상생 활동</h3>
+                    <p>제주의 자연과 로컬 원물을 활용한 프로그램으로 지역 관광과 차 문화의 접점을 넓혀갑니다.</p>
+                </div>
             </div>
         </div>
     </div>

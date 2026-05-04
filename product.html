@@ -51,18 +51,18 @@
     </div>
 
     <div class="sub_content">
-        <div class="submenu">
+        <div class="submenu" data-tab-group="product">
             <ul>
-                <li class="on"><a href="#">피쳐드 제품</a></li>
-                <li><a href="#">전체 제품</a></li>
-                <li><a href="#">신제품</a></li>
-                <li><a href="#">베스트셀러</a></li>
+                <li class="on"><a href="#" data-tab-target="featured">피쳐드 제품</a></li>
+                <li><a href="#" data-tab-target="all">전체 제품</a></li>
+                <li><a href="#" data-tab-target="new">신제품</a></li>
+                <li><a href="#" data-tab-target="best">베스트셀러</a></li>
             </ul>
         </div>
     </div>
 
     <!-- 피쳐드 제품 배너 -->
-    <div class="product_featured">
+    <div class="product_featured tab_panel is_active" data-tab-panel="product" data-tab-name="featured">
         <div class="product_section_header">
             <p>MUSEUM EXCLUSIVE</p>
             <h2>오직 이곳에서만 만날 수 있는 <span>특별한 차</span></h2>
@@ -111,7 +111,7 @@
     </div>
 
     <!-- 제품 카탈로그 그리드 -->
-    <div class="product_catalog">
+    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="all">
         <div class="inner">
             <div class="product_section_header">
                 <p>ALL PRODUCTS</p>
@@ -163,6 +163,98 @@
                         <h3>시그니처 패키지</h3>
                         <span class="card_price">38,000원</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="new">
+        <div class="inner">
+            <div class="product_section_header">
+                <p>NEW ARRIVALS</p>
+                <h2>제주의 계절을 담은 <span>신제품</span></h2>
+            </div>
+            <div class="product_grid">
+                <div class="product_card">
+                    <div class="card_img">
+                        <img src="img/shop_3.png" alt="제주 삼다 영귤티">
+                    </div>
+                    <div class="card_info">
+                        <span class="card_tag">시즌 블렌드</span>
+                        <h3>제주 삼다 영귤티</h3>
+                        <span class="card_price">11,000원</span>
+                    </div>
+                </div>
+                <div class="product_card">
+                    <div class="card_img">
+                        <img src="img/shop_4.png" alt="제주 난꽃향 그린티">
+                    </div>
+                    <div class="card_info">
+                        <span class="card_tag">그린티</span>
+                        <h3>제주 난꽃향 그린티</h3>
+                        <span class="card_price">16,500원</span>
+                    </div>
+                </div>
+                <div class="product_card">
+                    <div class="card_img">
+                        <img src="img/shop_2.png" alt="제주 동백꽃 티">
+                    </div>
+                    <div class="card_info">
+                        <span class="card_tag">플라워 블렌드</span>
+                        <h3>제주 동백꽃 티</h3>
+                        <span class="card_price">11,000원</span>
+                    </div>
+                </div>
+                <div class="product_card">
+                    <div class="card_img">
+                        <img src="img/shop_1.png" alt="시그니처 패키지">
+                    </div>
+                    <div class="card_info">
+                        <span class="card_tag">기프트</span>
+                        <h3>시그니처 패키지</h3>
+                        <span class="card_price">38,000원</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="best">
+        <div class="inner">
+            <div class="product_section_header">
+                <p>BEST SELLER</p>
+                <h2>방문객이 가장 많이 찾은 <span>베스트셀러</span></h2>
+            </div>
+            <div class="best_rank_list">
+                <div class="best_rank_item">
+                    <span class="rank_num">01</span>
+                    <img src="img/shop_1.png" alt="시그니처 패키지">
+                    <div>
+                        <span class="card_tag">시즌 에디션</span>
+                        <h3>제주 한정 티 컬렉션 시그니처 패키지</h3>
+                        <p>티뮤지엄의 대표 블렌드를 한 번에 만날 수 있는 방문객 전용 구성입니다.</p>
+                    </div>
+                    <span class="card_price">38,000원</span>
+                </div>
+                <div class="best_rank_item">
+                    <span class="rank_num">02</span>
+                    <img src="img/shop_4.png" alt="제주 난꽃향 그린티">
+                    <div>
+                        <span class="card_tag">그린티</span>
+                        <h3>제주 난꽃향 그린티</h3>
+                        <p>은은한 꽃향과 깔끔한 녹차의 여운이 조화로운 티뮤지엄 인기 제품입니다.</p>
+                    </div>
+                    <span class="card_price">16,500원</span>
+                </div>
+                <div class="best_rank_item">
+                    <span class="rank_num">03</span>
+                    <img src="img/shop_2.png" alt="제주 동백꽃 티">
+                    <div>
+                        <span class="card_tag">블렌디드 티</span>
+                        <h3>제주 동백꽃 티</h3>
+                        <p>선물용으로도 좋은 산뜻한 꽃향의 블렌디드 티입니다.</p>
+                    </div>
+                    <span class="card_price">11,000원</span>
                 </div>
             </div>
         </div>
