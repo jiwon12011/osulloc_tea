@@ -28,6 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
             trigger.addEventListener("click", event => {
                 event.preventDefault();
                 setActiveTab(trigger.dataset.tabTarget);
+
+                if (window.matchMedia("(max-width: 640px)").matches) {
+                    trigger.scrollIntoView({
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "center"
+                    });
+                }
             });
         });
 
