@@ -400,6 +400,9 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
     padding-top: 60px;
     border-bottom: 1px solid #ddd; /* 밑바탕 연한 선 */
 }
+.submenu_toggle {
+    display: none;
+}
 
 .sub_content .submenu ul {
     display: flex; 
@@ -2147,26 +2150,78 @@ img {
     }
     .sub_content .submenu {
         padding-top: 36px;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
+        overflow: visible;
+        position: relative;
+        border-bottom: 0;
     }
-    .sub_content .submenu::-webkit-scrollbar,
     .product_catalog .cat_tabs::-webkit-scrollbar {
         display: none;
     }
+    .submenu_toggle {
+        width: 100%;
+        height: 52px;
+        border: 1px solid rgba(42,32,23,0.22);
+        background: rgba(255,255,255,0.22);
+        color: #2A2017;
+        font-family: 'Pretendard', sans-serif;
+        font-size: 17px;
+        font-weight: 500;
+        text-align: left;
+        padding: 0 46px 0 18px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        cursor: pointer;
+    }
+    .submenu_toggle::after {
+        content: "";
+        position: absolute;
+        right: 18px;
+        top: 50%;
+        width: 8px;
+        height: 8px;
+        border-right: 1px solid #2A2017;
+        border-bottom: 1px solid #2A2017;
+        transform: translateY(-65%) rotate(45deg);
+        transition: transform 0.25s ease;
+    }
+    .sub_content .submenu.is_open .submenu_toggle::after {
+        transform: translateY(-35%) rotate(225deg);
+    }
     .sub_content .submenu ul,
     .sub_content .submenu.submenu_wide ul {
-        justify-content: flex-start;
-        gap: 34px;
-        min-width: max-content;
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        z-index: 20;
+        flex-direction: column;
+        gap: 0;
+        min-width: 0;
+        padding: 8px 0;
+        background: #F5EFE9;
+        border: 1px solid rgba(42,32,23,0.16);
+        box-shadow: 0 16px 30px rgba(42,32,23,0.12);
+    }
+    .sub_content .submenu.is_open ul {
+        display: flex;
     }
     .sub_content .submenu ul li {
         font-size: 17px;
-        white-space: nowrap;
+        white-space: normal;
     }
     .sub_content .submenu ul li a {
-        padding-bottom: 13px;
+        display: block;
+        padding: 15px 18px;
+        color: #77665B;
+    }
+    .sub_content .submenu ul li a::after {
+        display: none;
+    }
+    .sub_content .submenu ul li.on a {
+        background: rgba(89,96,56,0.08);
+        color: #2A2017;
     }
     .sub_content .sub_intro {
         margin: 64px 0 100px;

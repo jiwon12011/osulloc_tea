@@ -47,6 +47,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!triggers.length || !panels.length) return;
 
+        const toggle = document.createElement("button");
+        toggle.className = "submenu_toggle";
+        toggle.type = "button";
+        toggle.setAttribute("aria-expanded", "false");
+        group.insertBefore(toggle, group.querySelector("ul"));
+
+        const setSubmenuOpen = isOpen => {
+            group.classList.toggle("is_open", isOpen);
+            toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        };
+
+        const updateToggleText = activeTrigger => {
+            toggle.textContent = activeTrigger.textContent.trim();
+        };
+
         const setActiveTab = tabName => {
             triggers.forEach(trigger => {
                 const item = trigger.closest("li");
@@ -54,6 +69,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 if (item) item.classList.toggle("on", isActive);
                 trigger.setAttribute("aria-selected", isActive ? "true" : "false");
+
+                if (isActive) updateToggleText(trigger);
             });
 
             panels.forEach(panel => {
@@ -70,13 +87,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 setActiveTab(trigger.dataset.tabTarget);
 
                 if (window.matchMedia("(max-width: 640px)").matches) {
-                    trigger.scrollIntoView({
-                        behavior: "smooth",
-                        block: "nearest",
-                        inline: "center"
-                    });
+                    setSubmenuOpen(false);
                 }
             });
+        });
+
+        toggle.addEventListener("click", () => {
+            setSubmenuOpen(!group.classList.contains("is_open"));
+        });
+
+        document.addEventListener("click", event => {
+            if (!group.contains(event.target)) setSubmenuOpen(false);
+        });
+
+        document.addEventListener("keydown", event => {
+            if (event.key === "Escape") setSubmenuOpen(false);
         });
 
         const defaultTrigger = group.querySelector("li.on [data-tab-target]") || triggers[0];
