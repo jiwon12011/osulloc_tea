@@ -1809,14 +1809,12 @@ img {
     .header .header_top {
         padding: 14px 18px 0;
         min-height: 44px;
-        justify-content: space-between;
+        justify-content: flex-start;
         position: relative;
         box-sizing: border-box;
     }
     .header .header_top .header_lang {
-        display: flex;
-        align-items: center;
-        gap: 4px;
+        display: none;
     }
     .header .header_top::before,
     .header .header_top::after {
@@ -1862,7 +1860,7 @@ img {
         display: inline-flex !important;
         position: fixed;
         top: 15px;
-        left: 70px;
+        left: 18px;
         width: 42px;
         height: 42px;
         border: 1px solid rgba(42,32,23,0.14);
@@ -2404,7 +2402,7 @@ img {
         display: inline-flex !important;
         position: fixed !important;
         top: 15px !important;
-        left: 70px !important;
+        left: 18px !important;
         width: 42px !important;
         height: 42px !important;
         z-index: 2000 !important;
