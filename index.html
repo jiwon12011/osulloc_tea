@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>osulloc_teamuseum</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="css/style.css?v=20260505d">
+    <link rel="stylesheet" href="css/style.css?v=20260507a">
     <link rel="stylesheet" href="css/font.css">
-    <script src="script/script.js?v=20260505d"></script>
+    <script src="script/script.js?v=20260507a"></script>
 </head>
 
 <body>
@@ -402,54 +402,50 @@
             });
 
             gsap.from(".content2 .teacourse", {
-                y: 38,
-                opacity: 0,
-                duration: 0.9,
+                y: 24,
+                duration: 0.75,
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".content2",
-                    start: "top 70%",
+                    start: "top 86%",
                     once: true
                 }
             });
             gsap.from(".content2 ul li", {
-                y: 58,
-                opacity: 0,
-                rotationX: 8,
+                y: 34,
+                scale: 0.98,
                 transformOrigin: "center top",
-                duration: 0.8,
+                duration: 0.7,
                 stagger: {
-                    each: 0.12,
+                    each: 0.1,
                     from: "start"
                 },
-                ease: "back.out(1.15)",
+                ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".content2 ul",
-                    start: "top 76%",
+                    start: "top 92%",
                     once: true
                 }
             });
 
             gsap.from(".content3 .map_wrapper", {
-                x: -42,
-                opacity: 0,
+                x: -28,
                 duration: 1,
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".content3",
-                    start: "top 72%",
+                    start: "top 86%",
                     once: true
                 }
             });
             gsap.from(".content3 .textbox > *", {
-                x: 38,
-                opacity: 0,
+                x: 24,
                 duration: 0.75,
                 stagger: 0.12,
                 ease: "power3.out",
                 scrollTrigger: {
                     trigger: ".content3",
-                    start: "top 72%",
+                    start: "top 86%",
                     once: true
                 }
             });
@@ -467,7 +463,6 @@
 
             gsap.from(".content4 .c4_textbox > *", {
                 y: 30,
-                opacity: 0,
                 duration: 0.85,
                 stagger: 0.12,
                 ease: "power3.out",
@@ -479,7 +474,6 @@
             });
             gsap.from(".content4 .c4_shop > a", {
                 x: -56,
-                opacity: 0,
                 duration: 1,
                 ease: "power3.out",
                 scrollTrigger: {
@@ -490,7 +484,6 @@
             });
             gsap.from(".content4 .shopbox a", {
                 y: 48,
-                opacity: 0,
                 duration: 0.85,
                 stagger: 0.14,
                 ease: "power3.out",
