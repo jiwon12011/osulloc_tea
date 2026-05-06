@@ -274,6 +274,8 @@
 
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 
     <!-- Initialize Swiper -->
     <script>
@@ -297,24 +299,220 @@
     </script>
 
     <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const content1 = document.querySelector('.content1');
+        document.addEventListener("DOMContentLoaded", () => {
+            const content1 = document.querySelector('.content1');
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                // 화면에 content1 섹션이 보이기 시작하면
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show'); // 'show' 클래스를 붙여줍니다.
-                } else {
-                    // 다시 스크롤을 올렸을 때 효과를 또 보고 싶다면 아래 주석을 해제하세요!
-                    entry.target.classList.remove('show');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            if (content1) observer.observe(content1);
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            if (!window.gsap) return;
+
+            gsap.registerPlugin(ScrollTrigger);
+
+            const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+            const isTouch = window.matchMedia("(hover: none)").matches;
+
+            if (reduceMotion) {
+                gsap.set([
+                    ".mySwiper .textbox > *",
+                    ".container .content1 .left .textbox",
+                    ".container .content1 .left img",
+                    ".container .content1 .right img",
+                    ".content2 .teacourse",
+                    ".content2 ul li",
+                    ".content3 .map_wrapper",
+                    ".content3 .textbox",
+                    ".content4 .c4_textbox > *",
+                    ".content4 .c4_shop > a",
+                    ".content4 .shopbox a"
+                ], { clearProps: "all", opacity: 1, y: 0 });
+                return;
+            }
+
+            const animateHero = () => {
+                const activeSlide = document.querySelector(".mySwiper .swiper-slide-active");
+                if (!activeSlide) return;
+
+                gsap.fromTo(activeSlide.querySelectorAll(".textbox > *"),
+                    { y: 28, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.9, stagger: 0.16, ease: "power3.out" }
+                );
+                gsap.fromTo(activeSlide.querySelector("img"),
+                    { scale: 1.08 },
+                    { scale: 1, duration: 2.4, ease: "power2.out" }
+                );
+            };
+
+            gsap.from(".header", {
+                y: -28,
+                opacity: 0,
+                duration: 0.7,
+                ease: "power3.out"
+            });
+
+            animateHero();
+            if (window.swiper) {
+                swiper.on("slideChangeTransitionStart", animateHero);
+            }
+
+            gsap.to(".container .content1 .left .textbox", {
+                opacity: 1,
+                y: 0,
+                duration: 0.95,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content1",
+                    start: "top 72%",
+                    once: true
                 }
             });
-        }, { threshold: 0.2 }); // 섹션의 20%가 보일 때 실행
+            gsap.to(".container .content1 .left img", {
+                opacity: 1,
+                y: 0,
+                duration: 1.05,
+                delay: 0.1,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".content1",
+                    start: "top 68%",
+                    once: true
+                }
+            });
+            gsap.to(".container .content1 .right img", {
+                opacity: 1,
+                y: 0,
+                duration: 1.15,
+                delay: 0.22,
+                ease: "power2.out",
+                scrollTrigger: {
+                    trigger: ".content1",
+                    start: "top 68%",
+                    once: true
+                }
+            });
 
-        observer.observe(content1);
-    });
-</script>
+            gsap.from(".content2 .teacourse", {
+                y: 38,
+                opacity: 0,
+                duration: 0.9,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content2",
+                    start: "top 70%",
+                    once: true
+                }
+            });
+            gsap.from(".content2 ul li", {
+                y: 58,
+                opacity: 0,
+                rotationX: 8,
+                transformOrigin: "center top",
+                duration: 0.8,
+                stagger: {
+                    each: 0.12,
+                    from: "start"
+                },
+                ease: "back.out(1.15)",
+                scrollTrigger: {
+                    trigger: ".content2 ul",
+                    start: "top 76%",
+                    once: true
+                }
+            });
+
+            gsap.from(".content3 .map_wrapper", {
+                x: -42,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content3",
+                    start: "top 72%",
+                    once: true
+                }
+            });
+            gsap.from(".content3 .textbox > *", {
+                x: 38,
+                opacity: 0,
+                duration: 0.75,
+                stagger: 0.12,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content3",
+                    start: "top 72%",
+                    once: true
+                }
+            });
+            gsap.to(".point", {
+                scale: 1.16,
+                duration: 1.1,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut",
+                stagger: {
+                    each: 0.18,
+                    repeat: -1
+                }
+            });
+
+            gsap.from(".content4 .c4_textbox > *", {
+                y: 30,
+                opacity: 0,
+                duration: 0.85,
+                stagger: 0.12,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content4",
+                    start: "top 74%",
+                    once: true
+                }
+            });
+            gsap.from(".content4 .c4_shop > a", {
+                x: -56,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content4 .c4_shop",
+                    start: "top 76%",
+                    once: true
+                }
+            });
+            gsap.from(".content4 .shopbox a", {
+                y: 48,
+                opacity: 0,
+                duration: 0.85,
+                stagger: 0.14,
+                ease: "power3.out",
+                scrollTrigger: {
+                    trigger: ".content4 .c4_shop",
+                    start: "top 76%",
+                    once: true
+                }
+            });
+
+            if (!isTouch) {
+                document.querySelectorAll(".content4 .c4_shop a, .content2 ul li").forEach(item => {
+                    item.addEventListener("mouseenter", () => {
+                        gsap.to(item, { y: -8, duration: 0.28, ease: "power2.out" });
+                    });
+                    item.addEventListener("mouseleave", () => {
+                        gsap.to(item, { y: 0, duration: 0.32, ease: "power2.out" });
+                    });
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
