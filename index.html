@@ -365,9 +365,9 @@
                 swiper.on("slideChangeTransitionStart", animateHero);
             }
 
-            gsap.to(".container .content1 .left .textbox", {
-                opacity: 1,
-                y: 0,
+            gsap.from(".container .content1 .left .textbox", {
+                opacity: 0,
+                y: 64,
                 duration: 0.95,
                 ease: "power3.out",
                 scrollTrigger: {
@@ -376,9 +376,9 @@
                     once: true
                 }
             });
-            gsap.to(".container .content1 .left img", {
-                opacity: 1,
-                y: 0,
+            gsap.from(".container .content1 .left img", {
+                opacity: 0,
+                y: 76,
                 duration: 1.05,
                 delay: 0.1,
                 ease: "power2.out",
@@ -388,9 +388,9 @@
                     once: true
                 }
             });
-            gsap.to(".container .content1 .right img", {
-                opacity: 1,
-                y: 0,
+            gsap.from(".container .content1 .right img", {
+                opacity: 0,
+                y: 92,
                 duration: 1.15,
                 delay: 0.22,
                 ease: "power2.out",

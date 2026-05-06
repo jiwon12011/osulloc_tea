@@ -105,7 +105,7 @@ margin-bottom: 30px; font-weight: lighter;}
 
 .container{margin: 0 auto;}
 .container .content1{margin: 0 auto; padding: 120px 0 125px 0; 
-    height: 729px; display: flex; justify-content: center; gap: 60px;}
+    min-height: 729px; height: auto; display: flex; justify-content: center; gap: 60px;}
 .container .content1 .left{display: flex; ; flex-direction: column; justify-content: space-between; height: 729px;}
 .container .content1 .left .textbox_1{font-weight: 200; font-size: 16px;}
 .container .content1 .left .textbox_2{padding: 15px 0 30px;  font-size: 36px; }
@@ -118,8 +118,8 @@ margin-bottom: 30px; font-weight: lighter;}
 .container .content1 .left .textbox,
 .container .content1 .left img,
 .container .content1 .right img {
-    opacity: 0;
-    transform: translateY(120px);
+    opacity: 1;
+    transform: translateY(0);
     transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out보다 조금 더 쫀득한 느낌의 효과 */
 }
 
