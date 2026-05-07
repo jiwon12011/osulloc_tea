@@ -339,25 +339,40 @@
                 return;
             }
 
+            const calmReveal = (targets, options = {}) => {
+                gsap.from(targets, {
+                    opacity: 0,
+                    y: options.y ?? 22,
+                    duration: options.duration ?? 0.9,
+                    stagger: options.stagger ?? 0.08,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: options.trigger,
+                        start: options.start ?? "top 82%",
+                        once: true
+                    }
+                });
+            };
+
             const animateHero = () => {
                 const activeSlide = document.querySelector(".mySwiper .swiper-slide-active");
                 if (!activeSlide) return;
 
                 gsap.fromTo(activeSlide.querySelectorAll(".textbox > *"),
-                    { y: 28, opacity: 0 },
-                    { y: 0, opacity: 1, duration: 0.9, stagger: 0.16, ease: "power3.out" }
+                    { y: 18, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 1.05, stagger: 0.12, ease: "power2.out" }
                 );
                 gsap.fromTo(activeSlide.querySelector("img"),
-                    { scale: 1.08 },
-                    { scale: 1, duration: 2.4, ease: "power2.out" }
+                    { scale: 1.035 },
+                    { scale: 1, duration: 3.2, ease: "sine.out" }
                 );
             };
 
             gsap.from(".header", {
-                y: -28,
+                y: -12,
                 opacity: 0,
-                duration: 0.7,
-                ease: "power3.out"
+                duration: 0.8,
+                ease: "power2.out"
             });
 
             animateHero();
@@ -365,142 +380,78 @@
                 swiper.on("slideChangeTransitionStart", animateHero);
             }
 
-            gsap.from(".container .content1 .left .textbox", {
-                opacity: 0,
-                y: 64,
-                duration: 0.95,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content1",
-                    start: "top 72%",
-                    once: true
-                }
+            calmReveal(".container .content1 .left .textbox", {
+                trigger: ".content1",
+                start: "top 74%",
+                y: 26,
+                duration: 1
             });
-            gsap.from(".container .content1 .left img", {
-                opacity: 0,
-                y: 76,
-                duration: 1.05,
-                delay: 0.1,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".content1",
-                    start: "top 68%",
-                    once: true
-                }
-            });
-            gsap.from(".container .content1 .right img", {
-                opacity: 0,
-                y: 92,
+            calmReveal(".container .content1 .left img, .container .content1 .right img", {
+                trigger: ".content1",
+                start: "top 70%",
+                y: 30,
                 duration: 1.15,
-                delay: 0.22,
-                ease: "power2.out",
-                scrollTrigger: {
-                    trigger: ".content1",
-                    start: "top 68%",
-                    once: true
-                }
+                stagger: 0.12
             });
 
-            gsap.from(".content2 .teacourse", {
-                y: 24,
-                duration: 0.75,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content2",
-                    start: "top 86%",
-                    once: true
-                }
+            calmReveal(".content2 .teacourse", {
+                trigger: ".content2",
+                start: "top 84%",
+                y: 16,
+                duration: 0.9
             });
-            gsap.from(".content2 ul li", {
-                y: 34,
-                scale: 0.98,
-                transformOrigin: "center top",
-                duration: 0.7,
-                stagger: {
-                    each: 0.1,
-                    from: "start"
-                },
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content2 ul",
-                    start: "top 92%",
-                    once: true
-                }
+            calmReveal(".content2 ul li", {
+                trigger: ".content2 ul",
+                start: "top 88%",
+                y: 20,
+                duration: 0.85,
+                stagger: 0.08
             });
 
-            gsap.from(".content3 .map_wrapper", {
-                x: -28,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content3",
-                    start: "top 86%",
-                    once: true
-                }
+            calmReveal(".content3 .map_wrapper", {
+                trigger: ".content3",
+                start: "top 84%",
+                y: 18,
+                duration: 1
             });
-            gsap.from(".content3 .textbox > *", {
-                x: 24,
-                duration: 0.75,
-                stagger: 0.12,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content3",
-                    start: "top 86%",
-                    once: true
-                }
+            calmReveal(".content3 .textbox > *", {
+                trigger: ".content3",
+                start: "top 84%",
+                y: 14,
+                duration: 0.9,
+                stagger: 0.08
             });
             gsap.to(".point", {
-                scale: 1.16,
-                duration: 1.1,
+                opacity: 0.72,
+                duration: 1.8,
                 repeat: -1,
                 yoyo: true,
                 ease: "sine.inOut",
-                stagger: {
-                    each: 0.18,
-                    repeat: -1
-                }
+                stagger: 0.24
             });
 
-            gsap.from(".content4 .c4_textbox > *", {
-                y: 30,
-                duration: 0.85,
-                stagger: 0.12,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content4",
-                    start: "top 74%",
-                    once: true
-                }
+            calmReveal(".content4 .c4_textbox > *", {
+                trigger: ".content4",
+                start: "top 76%",
+                y: 18,
+                duration: 0.9,
+                stagger: 0.08
             });
-            gsap.from(".content4 .c4_shop > a", {
-                x: -56,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content4 .c4_shop",
-                    start: "top 76%",
-                    once: true
-                }
-            });
-            gsap.from(".content4 .shopbox a", {
-                y: 48,
-                duration: 0.85,
-                stagger: 0.14,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: ".content4 .c4_shop",
-                    start: "top 76%",
-                    once: true
-                }
+            calmReveal(".content4 .c4_shop > a, .content4 .shopbox a", {
+                trigger: ".content4 .c4_shop",
+                start: "top 78%",
+                y: 22,
+                duration: 0.9,
+                stagger: 0.09
             });
 
             if (!isTouch) {
                 document.querySelectorAll(".content4 .c4_shop a, .content2 ul li").forEach(item => {
                     item.addEventListener("mouseenter", () => {
-                        gsap.to(item, { y: -8, duration: 0.28, ease: "power2.out" });
+                        gsap.to(item, { y: -4, duration: 0.3, ease: "power2.out" });
                     });
                     item.addEventListener("mouseleave", () => {
-                        gsap.to(item, { y: 0, duration: 0.32, ease: "power2.out" });
+                        gsap.to(item, { y: 0, duration: 0.35, ease: "power2.out" });
                     });
                 });
             }
