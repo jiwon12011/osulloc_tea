@@ -118,8 +118,8 @@ margin-bottom: 30px; font-weight: lighter;}
 .container .content1 .left .textbox,
 .container .content1 .left img,
 .container .content1 .right img {
-    opacity: 1;
-    transform: translateY(0);
+    opacity: 0;
+    transform: translateY(120px);
     transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out보다 조금 더 쫀득한 느낌의 효과 */
 }
 
@@ -184,7 +184,7 @@ transition: all 0.5s ease; backface-visibility: hidden;}
 font-weight: lighter;}
 .content2 ul li .box_bottom .mini{padding-top: 10px; font-size: 16px; font-weight: lighter; color: #C7C7C7;}
 
-.content3 .container{padding: 96px 0;
+.content3 .container{padding: 120px 0;
     height: 480px; width: 891px; display: flex; justify-content: space-between; align-items: center;}
 .content3 .container .map{width: 480px; height: 480px;}
 .content3 .container .textbox{text-align: center;
