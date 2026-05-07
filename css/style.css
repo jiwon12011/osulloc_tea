@@ -248,9 +248,29 @@ text-align: center; align-items: center;}
 .content4 .c4_textbox{color: #F5EFE9; padding-bottom: 36px;}
 .content4 .c4_textbox span{font-size: 20px; font-weight: 100;}
 .content4 .c4_textbox h2{padding-top: 15px; font-size: 32px; font-weight: 300;}
-.content4 .c4_shop{display: flex; gap: 90px;}
-.content4 .c4_shop .shopbox{display: flex; gap: 60px; text-align: left;}
+.content4 .c4_shop{
+    width: min(1220px, calc(100% - 80px));
+    display: grid;
+    grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+    gap: 64px;
+    align-items: start;
+}
+.content4 .c4_shop > a img {
+    width: 100%;
+    display: block;
+}
+.content4 .c4_shop .shopbox{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 270px));
+    justify-content: space-between;
+    gap: 32px;
+    text-align: left;
+}
 .content4 .c4_shop .shopbox a{color: #F5EFE9;}
+.content4 .c4_shop .shopbox a img {
+    width: 100%;
+    display: block;
+}
 .content4 .c4_shop .shopbox a h3{padding-top: 30px; font-size: 22px; font-weight: 200;}
 .content4 .c4_shop .shopbox a span{ display: block;padding-top: 20px; font-size: 19px; font-weight: 200;}
 
@@ -1726,11 +1746,12 @@ img {
         gap: 70px;
     }
     .content4 .c4_shop {
-        gap: 46px;
-        align-items: flex-start;
+        width: calc(100% - 80px);
+        grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+        gap: 36px;
     }
     .content4 .c4_shop .shopbox {
-        gap: 28px;
+        gap: 22px;
     }
     footer .footer_container {
         padding: 0 40px;
@@ -2074,6 +2095,7 @@ img {
     }
     .content4 .c4_shop,
     .content4 .c4_shop .shopbox {
+        display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
