@@ -160,13 +160,13 @@ color: #fff; text-align: center; }
 background: rgba(170,170, 170, 0.3);
 text-align: left;
 display: flex; flex-direction: column; justify-content: center;
-transition: all 0.5s ease; backface-visibility: hidden;}
+transition: background 0.4s ease, border-color 0.4s ease; backface-visibility: hidden;
+border: 1px solid transparent; box-sizing: border-box;}
 
 
 .content2 ul li:hover {
-    transform: translateY(-8px); /* 위로 은은하게 이동 */
-    background: rgba(170, 170, 170, 0.4); /* 배경색을 살짝만 더 진하게 */
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* 부드러운 그림자로 입체감 */
+    background: rgba(170, 170, 170, 0.38);
+    border-color: rgba(245, 239, 233, 0.22);
     cursor: pointer;
 }
 
@@ -204,7 +204,7 @@ font-weight: lighter;}
     display: flex; 
     justify-content: center; 
     align-items: center;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* 살짝 튕기는듯한 고급스러운 효과 */
+    transition: background-color 0.4s ease, color 0.4s ease;
     background-color: transparent;
     cursor: pointer;
     overflow: hidden;
@@ -212,7 +212,6 @@ font-weight: lighter;}
 
 /* 1. 마우스를 올렸을 때 버튼 확대 및 배경색 변화 */
 .content3 .container .textbox .guidebox:hover {
-    transform: scale(1.03); 
     background-color: #2A2017; /* 배경색을 진한 갈색으로 */
 }
 
@@ -223,11 +222,11 @@ font-weight: lighter;}
 
 /* 3. 호버 시 화살표 이미지 색상 변화 및 오른쪽 이동 */
 .content3 .container .textbox .guidebox img {
-    transition: all 0.3s ease;
+    transition: filter 0.35s ease, opacity 0.35s ease;
 }
 .content3 .container .textbox .guidebox:hover img {
     filter: invert(1); /* 검은색 화살표를 흰색으로 반전 */
-    transform: translateX(5px); /* 오른쪽으로 살짝 이동 */
+    opacity: 0.86;
 }
 
 /* 가이드 박스 내부의 a 태그 설정 (클릭 영역 확보) */
@@ -353,21 +352,22 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
 
 .content4 .c4_shop a {
     display: block;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 고급스러운 가감속 */
+    transition: color 0.4s ease;
 }
 
 .content4 .c4_shop a:hover {
-    transform: translateY(-8px); /* 위로 슥- 떠오름 */
+    color: #fff;
 }
 
 /* 이미지에 은은한 그림자 추가 */
 .content4 .c4_shop a img {
-    transition: box-shadow 0.4s ease;
+    transition: filter 0.45s ease, transform 0.45s ease;
     border-radius: 4px; /* 아주 살짝만 둥글게 */
 }
 
 .content4 .c4_shop a:hover img {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15); /* 부드럽고 깊은 그림자 */
+    filter: brightness(1.04) contrast(1.02);
+    transform: scale(1.015);
 }
 
 
@@ -464,13 +464,11 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
     width: 100% !important; /* on의 0보다 우선순위를 높이기 위해 !important 추가 */
 }
 
-/* --- 카드 호버 모션은 그대로 유지 --- */
 .intro_content {
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transition: filter 0.45s ease;
 }
 .intro_content:hover {
-    transform: translateY(-10px);
-    filter: drop-shadow(0 20px 30px rgba(0,0,0,0.1));
+    filter: brightness(1.03) contrast(1.02);
 }
 
 .sub_content .sub_intro {
@@ -795,9 +793,8 @@ display: flex; flex-direction: column;
     transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .brand_mission .value_card:hover {
-    transform: translateY(-8px);
     background: rgba(255,255,255,0.14);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: rgba(245,239,233,0.18);
 }
 .brand_mission .value_card .icon { font-size: 36px; line-height: 1; }
 .brand_mission .value_card h3 {
@@ -952,9 +949,12 @@ display: flex; flex-direction: column;
 .product_featured .featured_banner .banner_img img {
     width: 100%;
     display: block;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s ease, filter 0.45s ease;
 }
-.product_featured .featured_banner:hover .banner_img img { transform: scale(1.03); }
+.product_featured .featured_banner:hover .banner_img img {
+    transform: scale(1.015);
+    filter: brightness(1.03) contrast(1.02);
+}
 
 .product_featured .featured_banner .banner_text {
     flex: 1;
@@ -999,7 +999,7 @@ display: flex; flex-direction: column;
     font-size: 16px;
     font-weight: 400;
     color: #2A2017;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transition: background 0.4s ease, color 0.4s ease;
     cursor: pointer;
 }
 .product_featured .featured_banner .banner_text .buy_btn:hover {
@@ -1008,8 +1008,8 @@ display: flex; flex-direction: column;
 }
 .product_featured .featured_banner .banner_text .buy_btn:hover img {
     filter: invert(1);
-    transform: translateX(5px);
-    transition: all 0.3s ease;
+    opacity: 0.86;
+    transition: filter 0.35s ease, opacity 0.35s ease;
 }
 
 .product_catalog {
@@ -1055,20 +1055,22 @@ display: flex; flex-direction: column;
     display: flex;
     flex-direction: column;
     background: #fff;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
     cursor: pointer;
 }
 .product_catalog .product_card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 0 0 1px rgba(89,96,56,0.16);
 }
 .product_catalog .product_card .card_img { overflow: hidden; }
 .product_catalog .product_card .card_img img {
     width: 100%;
     display: block;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, filter 0.45s ease;
 }
-.product_catalog .product_card:hover .card_img img { transform: scale(1.06); }
+.product_catalog .product_card:hover .card_img img {
+    transform: scale(1.025);
+    filter: brightness(1.04) contrast(1.02);
+}
 
 .product_catalog .product_card .card_info {
     padding: 20px 20px 24px;
@@ -1206,9 +1208,8 @@ display: flex; flex-direction: column;
     border: 1px solid rgba(255,255,255,0.08);
 }
 .community_gallery .gallery_card:hover {
-    transform: translateY(-8px);
     background: rgba(255,255,255,0.10);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    border-color: rgba(245,239,233,0.16);
 }
 .community_gallery .gallery_card .review_stars {
     color: #FFFDC3;
@@ -1285,9 +1286,12 @@ display: flex; flex-direction: column;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.5s ease, filter 0.45s ease;
 }
-.community_sns .sns_tile:hover img { transform: scale(1.08); }
+.community_sns .sns_tile:hover img {
+    transform: scale(1.025);
+    filter: brightness(1.03) contrast(1.02);
+}
 
 .community_sns .sns_tile .sns_overlay {
     position: absolute;
@@ -1616,11 +1620,10 @@ display: flex; flex-direction: column;
     display: flex;
     flex-direction: column;
     gap: 18px;
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    transition: box-shadow 0.35s ease;
 }
 .event_card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    box-shadow: 0 0 0 1px rgba(89,96,56,0.16);
 }
 .event_badge {
     width: fit-content;
