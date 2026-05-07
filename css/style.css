@@ -44,7 +44,7 @@ body{ margin: 0;
 }
 .header .nav ul {
     display: flex; 
-    gap: 150px; /* 메뉴 사이의 간격입니다. 맘에 들게 숫자를 조절해 보세요! */
+    gap: clamp(60px, 10vw, 150px);
     /* flex-grow: 1;  <-- 이 녀석이 쫙쫙 늘어나게 한 범인이니 꼭 지워주세요! */
 }
 .header .nav ul li{text-align: center; }
@@ -79,11 +79,12 @@ body{ margin: 0;
 .mySwiper .textbox{color: #fff; position: absolute;
 left: 50%; top: 50%;
 transform: translateX(-50%) translateY(-210px);
+width: min(1240px, calc(100% - 160px));
 text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
-.mySwiper .textbox .text1{font-size: 20px;
+.mySwiper .textbox .text1{font-size: clamp(15px, 1.5vw, 20px);
 margin-bottom: 30px; font-weight: 300;}
-.mySwiper .textbox .text2{font-size: 40px;}
+.mySwiper .textbox .text2{font-size: clamp(24px, 3.5vw, 40px);}
 .mySwiper .swiper-pagination-bullet {
     background: #fff; /* 기본 점 색상을 하얀색으로 줍니다 */
     opacity: 0.5; /* 살짝 투명하게 해서 뒤로 물러난 느낌을 줍니다 */
@@ -107,11 +108,11 @@ margin-bottom: 30px; font-weight: 300;}
 .container .content1{margin: 0 auto; padding: 120px 0 125px 0; 
     min-height: 729px; height: auto; display: flex; justify-content: center; gap: 60px;}
 .container .content1 .left{display: flex; ; flex-direction: column; justify-content: space-between; height: 729px;}
-.container .content1 .left .textbox_1{font-weight: 200; font-size: 16px;}
-.container .content1 .left .textbox_2{padding: 15px 0 30px;  font-size: 36px; }
+.container .content1 .left .textbox_1{font-weight: 200; font-size: clamp(14px, 1.2vw, 16px);}
+.container .content1 .left .textbox_2{padding: 15px 0 30px; font-size: clamp(26px, 3vw, 36px);}
 .container .content1 .left .textbox_2 span{font-weight: 600;}
 .container .content1 .left .textbox_3{
-    padding: 10px 0 0 0; font-size: 20px; font-weight: 200;}
+    padding: 10px 0 0 0; font-size: clamp(16px, 1.6vw, 20px); font-weight: 200;}
 
 
 /* 1. 전체 속도를 0.8초로 변경 */
@@ -148,10 +149,10 @@ margin-bottom: 30px; font-weight: 300;}
     box-sizing: border-box;
 color: #fff; text-align: center; }
 .content2 .teacourse{margin: 0 auto; padding: 0; display: block; text-align:center;
-    font-size: 32px; color: #fff; font-weight: 400;}
+    font-size: clamp(22px, 2.8vw, 32px); color: #fff; font-weight: 400;}
 .content2 .teacourse span{
     display: block; padding-top: 15px;
-    font-size: 20px; font-weight: 100;}
+    font-size: clamp(15px, 1.5vw, 20px); font-weight: 100;}
 .content2 ul{ padding: 42px 0 0;
     margin: 0 auto; gap: 28px 60px;
     max-width: 1229px; height: auto; display: flex; flex-wrap: wrap;}
@@ -180,7 +181,7 @@ border: 1px solid transparent; box-sizing: border-box;}
 .content2 ul li .box_top span div{
     font-size: 28px; padding-right: 3px; font-weight: 400;}
 .content2 ul li .box_bottom{padding: 0 64px;}
-.content2 ul li .box_bottom p{margin: 0; font-size: 20px;
+.content2 ul li .box_bottom p{margin: 0; font-size: clamp(16px, 1.8vw, 20px);
 font-weight: lighter;}
 .content2 ul li .box_bottom .mini{padding-top: 10px; font-size: 16px; font-weight: lighter; color: #C7C7C7;}
 
@@ -192,7 +193,7 @@ font-weight: lighter;}
     display: flex; flex-direction: column; gap: 30px;}
 .content3 .container .textbox span{font-size: 16px; font-weight: 200;}
 .content3 .container .textbox h2{ text-align: center;
-    font-size: 36px; font-weight: 300;}
+    font-size: clamp(26px, 3vw, 36px); font-weight: 300;}
 .content3 .container .textbox .guidebox{
     width: 200px;height: 45px; border: 1px solid #2A2017; gap: 10px;
     display: flex; justify-content: center; align-items: center;}
@@ -246,8 +247,8 @@ font-weight: lighter;}
 .content4 .container{padding: 90px 0 95px;display: flex; flex-direction: column;
 text-align: center; align-items: center;}
 .content4 .c4_textbox{color: #F5EFE9; padding-bottom: 36px;}
-.content4 .c4_textbox span{font-size: 20px; font-weight: 100;}
-.content4 .c4_textbox h2{padding-top: 15px; font-size: 32px; font-weight: 300;}
+.content4 .c4_textbox span{font-size: clamp(15px, 1.5vw, 20px); font-weight: 100;}
+.content4 .c4_textbox h2{padding-top: 15px; font-size: clamp(22px, 2.8vw, 32px); font-weight: 300;}
 .content4 .c4_shop{
     width: min(1220px, calc(100% - 80px));
     display: grid;
@@ -557,7 +558,7 @@ display: flex; flex-direction: column;
 }
 .page_hero .hero_deco {
     position: absolute;
-    font-size: 380px;
+    font-size: clamp(80px, 26vw, 380px);
     font-weight: 100;
     opacity: 0.06;
     line-height: 1;
@@ -581,14 +582,14 @@ display: flex; flex-direction: column;
     text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 .page_hero .hero_en {
-    font-size: 30px;
+    font-size: clamp(19px, 2.2vw, 30px);
     font-weight: 300;
     letter-spacing: 0.02em;
     text-transform: uppercase;
     line-height: 1.25;
 }
 .page_hero .hero_desc {
-    font-size: 18px;
+    font-size: clamp(14px, 1.4vw, 18px);
     font-weight: 200;
     line-height: 1.55;
     color: #F5EFE9;
@@ -600,7 +601,7 @@ display: flex; flex-direction: column;
     opacity: 0.35;
 }
 .page_hero .hero_ko {
-    font-size: 56px;
+    font-size: clamp(32px, 4.5vw, 56px);
     font-weight: 200;
     line-height: 1;
     letter-spacing: 0.04em;
@@ -655,7 +656,7 @@ display: flex; flex-direction: column;
     margin-bottom: 12px;
 }
 .sub_hero_text h2 {
-    font-size: 36px;
+    font-size: clamp(24px, 3vw, 36px);
     font-weight: 300;
 }
 
@@ -682,7 +683,7 @@ display: flex; flex-direction: column;
     margin-bottom: 16px;
 }
 .brand_story .story_header h2 {
-    font-size: 36px;
+    font-size: clamp(24px, 3vw, 36px);
     font-weight: 300;
     color: #2A2017;
     line-height: 1.5;
@@ -1672,13 +1673,9 @@ img {
     .mySwiper .textbox {
         left: 40px;
         right: 40px;
-        margin-left: 0;
+        width: auto;
         top: 50%;
         transform: translateY(-50%);
-    }
-    .mySwiper .textbox .text2 {
-        font-size: 34px;
-        line-height: 1.45;
     }
     .container .content1 {
         height: auto;
@@ -1970,11 +1967,9 @@ img {
         transform: translateY(-42%);
     }
     .mySwiper .textbox .text1 {
-        font-size: 15px;
         margin-bottom: 18px;
     }
     .mySwiper .textbox .text2 {
-        font-size: 22px;
         line-height: 1.45;
         word-break: keep-all;
         overflow-wrap: break-word;
@@ -1993,11 +1988,9 @@ img {
         align-items: stretch;
     }
     .container .content1 .left .textbox_2 {
-        font-size: 30px;
         line-height: 1.35;
     }
     .container .content1 .left .textbox_3 {
-        font-size: 17px;
         line-height: 1.7;
     }
     .container .content1 .right img {
@@ -2007,13 +2000,11 @@ img {
         padding: 64px 24px;
     }
     .content2 .teacourse {
-        font-size: 22px;
         line-height: 1.45;
         max-width: 320px;
         overflow-wrap: anywhere;
     }
     .content2 .teacourse span {
-        font-size: 16px;
         line-height: 1.65;
     }
     .content2 ul {
@@ -2137,13 +2128,11 @@ img {
         box-sizing: border-box;
     }
     .page_hero .hero_en {
-        font-size: 19px;
         line-height: 1.35;
         max-width: calc(100vw - 48px);
         overflow-wrap: anywhere;
     }
     .page_hero .hero_desc {
-        font-size: 15px;
         line-height: 1.65;
         max-width: calc(100vw - 48px);
         word-break: keep-all;
