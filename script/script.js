@@ -134,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         showRandomMapPoint();
-        window.setInterval(showRandomMapPoint, 1800);
+        const mapIntervalId = window.setInterval(showRandomMapPoint, 1800);
+        window.addEventListener("beforeunload", () => clearInterval(mapIntervalId));
     }
 });
