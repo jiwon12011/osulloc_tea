@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "osulloc",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["http-server", "."],
+      "port": 3500,
+      "autoPort": true
+    }
+  ]
+}

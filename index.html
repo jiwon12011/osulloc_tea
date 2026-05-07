@@ -15,18 +15,27 @@
     <header class="header">
         <div class="header_top">
             <div class="header_lang">
-                <a href="#">KR</a>
-                <a href="#"> <img src="img/arrow_down.png" alt="언어 선택"></a>
+                <div class="lang_selector">
+                    <button class="lang_btn" aria-expanded="false" aria-haspopup="listbox">
+                        <span class="lang_current">KR</span>
+                        <img src="img/arrow_down.png" alt="언어 선택">
+                    </button>
+                    <ul class="lang_dropdown" role="listbox">
+                        <li><button class="lang_option" data-lang="ko">한국어 (KR)</button></li>
+                        <li><button class="lang_option" data-lang="en">English (EN)</button></li>
+                        <li><button class="lang_option" data-lang="ja">日本語 (JP)</button></li>
+                    </ul>
+                </div>
             </div>
             <div class="header_login">
-                <a href="#">로그인</a>
-                <a href="#">회원가입</a>
-                <a href="#">고객센터</a>
+                <a href="login.html" data-i18n="login">로그인</a>
+                <a href="login.html#signup" data-i18n="signup">회원가입</a>
+                <a href="cs.html" data-i18n="cs">고객센터</a>
             </div>
             <div class="header_logout">
-                <a href="#">로그아웃</a>
-                <a href="#">마이페이지</a>
-                <a href="#">고객센터</a>
+                <a href="#" data-i18n="logout">로그아웃</a>
+                <a href="#" data-i18n="mypage">마이페이지</a>
+                <a href="cs.html" data-i18n="cs">고객센터</a>
             </div>
             <a href="#" class="mobile_menu_btn" role="button" aria-label="메뉴 열기" aria-expanded="false">☰</a>
         </div>

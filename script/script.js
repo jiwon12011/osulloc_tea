@@ -1,4 +1,54 @@
+/* ── 언어 번역 데이터 ── */
+const i18nData = {
+    ko: { login: "로그인", signup: "회원가입", cs: "고객센터", logout: "로그아웃", mypage: "마이페이지", lang_label: "KR" },
+    en: { login: "Login",  signup: "Sign Up",  cs: "Support",  logout: "Log Out",  mypage: "My Page",    lang_label: "EN" },
+    ja: { login: "ログイン", signup: "会員登録", cs: "サポート", logout: "ログアウト", mypage: "マイページ", lang_label: "JP" }
+};
+
+function applyLang(lang) {
+    if (!i18nData[lang]) return;
+    const t = i18nData[lang];
+    document.documentElement.lang = lang === "ko" ? "ko" : lang === "en" ? "en" : "ja";
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key]) el.textContent = t[key];
+    });
+    const langCurrent = document.querySelector(".lang_current");
+    if (langCurrent) langCurrent.textContent = t.lang_label;
+    document.querySelectorAll(".lang_option").forEach(btn => {
+        btn.classList.toggle("is_active", btn.dataset.lang === lang);
+    });
+    localStorage.setItem("osulloc_lang", lang);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+    /* ── 언어 선택기 ── */
+    const langSelector = document.querySelector(".lang_selector");
+    if (langSelector) {
+        const langBtn = langSelector.querySelector(".lang_btn");
+        langBtn.addEventListener("click", e => {
+            e.stopPropagation();
+            const isOpen = langSelector.classList.toggle("is_open");
+            langBtn.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+        langSelector.querySelectorAll(".lang_option").forEach(btn => {
+            btn.addEventListener("click", () => {
+                applyLang(btn.dataset.lang);
+                langSelector.classList.remove("is_open");
+                langBtn.setAttribute("aria-expanded", "false");
+            });
+        });
+        document.addEventListener("click", e => {
+            if (!langSelector.contains(e.target)) {
+                langSelector.classList.remove("is_open");
+                langBtn.setAttribute("aria-expanded", "false");
+            }
+        });
+        document.addEventListener("keydown", e => {
+            if (e.key === "Escape") langSelector.classList.remove("is_open");
+        });
+        applyLang(localStorage.getItem("osulloc_lang") || "ko");
+    }
     const header = document.querySelector(".header");
     const menuButton = document.querySelector(".mobile_menu_btn");
 
@@ -106,6 +156,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const defaultTrigger = group.querySelector("li.on [data-tab-target]") || triggers[0];
         setActiveTab(defaultTrigger.dataset.tabTarget);
+    });
+
+    /* ── 로그인/회원가입 탭 ── */
+    const authTabBtns = document.querySelectorAll(".auth_tab_btn");
+    if (authTabBtns.length) {
+        const authSections = document.querySelectorAll(".auth_form_section");
+        authTabBtns.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const target = btn.dataset.authTab;
+                authTabBtns.forEach(b => b.classList.toggle("is_active", b === btn));
+                authSections.forEach(s => s.classList.toggle("is_active", s.dataset.authSection === target));
+            });
+        });
+        const hash = location.hash.replace("#", "");
+        const initial = (hash === "signup") ? "signup" : "login";
+        authTabBtns.forEach(b => b.classList.toggle("is_active", b.dataset.authTab === initial));
+        authSections.forEach(s => s.classList.toggle("is_active", s.dataset.authSection === initial));
+    }
+
+    /* ── FAQ 아코디언 ── */
+    document.querySelectorAll(".faq_question").forEach(btn => {
+        btn.addEventListener("click", () => {
+            const item = btn.closest(".faq_item");
+            const isOpen = item.classList.contains("is_open");
+            document.querySelectorAll(".faq_item.is_open").forEach(i => i.classList.remove("is_open"));
+            if (!isOpen) item.classList.add("is_open");
+        });
     });
 
     const mapPoints = Array.from(document.querySelectorAll(".map_wrapper .point"));

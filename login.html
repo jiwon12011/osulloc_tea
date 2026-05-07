@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 오설록 티뮤지엄</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css?v=20260507f">
+    <link rel="stylesheet" href="css/font.css">
+    <script src="script/script.js?v=20260507f"></script>
+</head>
+
+<body>
+    <header class="header">
+        <div class="header_top">
+            <div class="header_lang">
+                <div class="lang_selector">
+                    <button class="lang_btn" aria-expanded="false" aria-haspopup="listbox">
+                        <span class="lang_current">KR</span>
+                        <img src="img/arrow_down.png" alt="언어 선택">
+                    </button>
+                    <ul class="lang_dropdown" role="listbox">
+                        <li><button class="lang_option" data-lang="ko">한국어 (KR)</button></li>
+                        <li><button class="lang_option" data-lang="en">English (EN)</button></li>
+                        <li><button class="lang_option" data-lang="ja">日本語 (JP)</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="header_login">
+                <a href="login.html" data-i18n="login">로그인</a>
+                <a href="login.html#signup" data-i18n="signup">회원가입</a>
+                <a href="cs.html" data-i18n="cs">고객센터</a>
+            </div>
+            <div class="header_logout">
+                <a href="#" data-i18n="logout">로그아웃</a>
+                <a href="#" data-i18n="mypage">마이페이지</a>
+                <a href="cs.html" data-i18n="cs">고객센터</a>
+            </div>
+            <a href="#" class="mobile_menu_btn" role="button" aria-label="메뉴 열기" aria-expanded="false">☰</a>
+        </div>
+        <div class="header_logo">
+            <a href="index.html"><img src="img/logo.png" alt="logo"></a>
+        </div>
+        <div class="nav">
+            <ul>
+                <li><a href="brand.html">Brand</a></li>
+                <li><a href="product.html">Product</a></li>
+                <li><a href="sub_01.html">Program</a></li>
+                <li><a href="community.html">Community</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="auth_page">
+        <div class="auth_box">
+            <div class="auth_logo">
+                <img src="img/logo.png" alt="오설록 티뮤지엄">
+            </div>
+
+            <div class="auth_tabs">
+                <button class="auth_tab_btn is_active" data-auth-tab="login">로그인</button>
+                <button class="auth_tab_btn" data-auth-tab="signup">회원가입</button>
+            </div>
+
+            <!-- 로그인 -->
+            <div class="auth_form_section is_active" data-auth-section="login">
+                <form action="#" method="post">
+                    <div class="auth_field">
+                        <label for="login_email">이메일</label>
+                        <input type="email" id="login_email" name="email" placeholder="이메일을 입력해주세요" autocomplete="email">
+                    </div>
+                    <div class="auth_field">
+                        <label for="login_pw">비밀번호</label>
+                        <input type="password" id="login_pw" name="password" placeholder="비밀번호를 입력해주세요" autocomplete="current-password">
+                    </div>
+                    <div class="auth_field" style="display:flex; align-items:center; justify-content:space-between; flex-direction:row; margin-bottom:24px;">
+                        <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#77665B; cursor:pointer; margin:0;">
+                            <input type="checkbox" name="remember"> 로그인 상태 유지
+                        </label>
+                        <a href="#" style="font-size:13px; color:#596038; text-decoration:underline; text-underline-offset:2px;">비밀번호 찾기</a>
+                    </div>
+                    <button type="submit" class="auth_submit">로그인</button>
+                </form>
+
+                <div class="auth_divider"><span>또는</span></div>
+
+                <div class="auth_sns">
+                    <button class="auth_sns_btn kakao" type="button">카카오로 계속하기</button>
+                    <button class="auth_sns_btn naver" type="button">네이버로 계속하기</button>
+                    <button class="auth_sns_btn" type="button">Google로 계속하기</button>
+                </div>
+
+                <p class="auth_helper">계정이 없으신가요? <a href="login.html#signup">회원가입</a></p>
+            </div>
+
+            <!-- 회원가입 -->
+            <div class="auth_form_section" data-auth-section="signup">
+                <form action="#" method="post">
+                    <div class="auth_field">
+                        <label for="signup_name">이름</label>
+                        <input type="text" id="signup_name" name="name" placeholder="이름을 입력해주세요" autocomplete="name">
+                    </div>
+                    <div class="auth_field">
+                        <label for="signup_email">이메일</label>
+                        <input type="email" id="signup_email" name="email" placeholder="이메일을 입력해주세요" autocomplete="email">
+                    </div>
+                    <div class="auth_field">
+                        <label for="signup_pw">비밀번호</label>
+                        <input type="password" id="signup_pw" name="password" placeholder="비밀번호 (8자 이상)" autocomplete="new-password">
+                    </div>
+                    <div class="auth_field">
+                        <label for="signup_pw2">비밀번호 확인</label>
+                        <input type="password" id="signup_pw2" name="password2" placeholder="비밀번호를 다시 입력해주세요" autocomplete="new-password">
+                    </div>
+                    <div class="auth_field">
+                        <label style="display:flex; align-items:center; gap:6px; cursor:pointer; margin-bottom:10px;">
+                            <input type="checkbox" name="agree_all"> <strong>전체 동의</strong>
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#77665B; cursor:pointer; margin-bottom:8px;">
+                            <input type="checkbox" name="agree_terms"> [필수] 서비스 이용약관 동의
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#77665B; cursor:pointer; margin-bottom:8px;">
+                            <input type="checkbox" name="agree_privacy"> [필수] 개인정보 처리방침 동의
+                        </label>
+                        <label style="display:flex; align-items:center; gap:6px; font-size:13px; color:#77665B; cursor:pointer;">
+                            <input type="checkbox" name="agree_marketing"> [선택] 마케팅 정보 수신 동의
+                        </label>
+                    </div>
+                    <button type="submit" class="auth_submit">회원가입</button>
+                </form>
+
+                <p class="auth_helper">이미 계정이 있으신가요? <a href="login.html">로그인</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer_container">
+            <div class="footer_box">
+                <div class="f_logo"><img src="img/logo.png" alt=""></div>
+                <div class="textbox">
+                    <div class="topbox">
+                        <a href="#">회사소개</a>
+                        <a href="#">서비스 이용약관</a>
+                        <a href="#">개인정보 처리방침</a>
+                    </div>
+                    <div class="bottombox">
+                        <div class="top">
+                            <span>(주) 오설록</span>
+                            <span>주소: 제주특별자치도 서귀포시 안덕면 신화역사로 15 (오설록 티뮤지엄)</span>
+                            <span>사업자등록번호: 390-87-01499 </span>
+                        </div>
+                        <span>(주)오설록은 오설록 브랜드를 제외한 입점 브랜드에 대해서는 통신판매중개자이며 통신판매의 당사자가 아닙니다.<br>
+                        따라서 입점판매자가 등록한 상품정보 및 거래에 대해서는 책임을 지지 않습니다.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+</body>
+
+</html>
