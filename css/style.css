@@ -331,12 +331,11 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
     opacity: 0;
     transition: all 0.4s ease; /* 스르륵 나타나는 효과 */
     pointer-events: none;
-    animation: mapLabelCue 14s ease-in-out infinite;
 }
 
-/* 4. 마우스를 올렸을 때(Hover) 라벨 등장 */
-.point:hover .label {
-    animation: none;
+/* 4. 마우스를 올렸을 때와 자동 안내 시 라벨 등장 */
+.point:hover .label,
+.point.is_auto_active .label {
     opacity: 1;
     top: -10px; /* 아래에서 위로 살짝 올라오며 등장 */
 }
@@ -350,31 +349,6 @@ footer .textbox .bottombox .top span{margin-bottom: 30px;}
 .p5 { top: 46%; left: 29%; }    /* 오설록 정원 */
 .p6 { top: 41%; left: 53%; }    /* 오설록 서광차밭 */
 .p7 { top: 58%; left: 83%; }    /* 오설록 농장 */  
-
-.p1 .label { animation-delay: 0s; }
-.p2 .label { animation-delay: 2s; }
-.p3 .label { animation-delay: 4s; }
-.p4 .label { animation-delay: 6s; }
-.p5 .label { animation-delay: 8s; }
-.p6 .label { animation-delay: 10s; }
-.p7 .label { animation-delay: 12s; }
-
-@keyframes mapLabelCue {
-    0%, 11% {
-        opacity: 1;
-        top: -10px;
-    }
-    15%, 100% {
-        opacity: 0;
-        top: -15px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .point .label {
-        animation: none;
-    }
-}
 
 .content4 .c4_shop a {
     display: block;

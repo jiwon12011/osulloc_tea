@@ -107,4 +107,33 @@ document.addEventListener("DOMContentLoaded", () => {
         const defaultTrigger = group.querySelector("li.on [data-tab-target]") || triggers[0];
         setActiveTab(defaultTrigger.dataset.tabTarget);
     });
+
+    const mapPoints = Array.from(document.querySelectorAll(".map_wrapper .point"));
+
+    if (mapPoints.length && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        let activeMapPoint = null;
+        let previousIndex = -1;
+
+        const showRandomMapPoint = () => {
+            if (activeMapPoint) activeMapPoint.classList.remove("is_auto_active");
+
+            let nextIndex = Math.floor(Math.random() * mapPoints.length);
+            if (mapPoints.length > 1) {
+                while (nextIndex === previousIndex) {
+                    nextIndex = Math.floor(Math.random() * mapPoints.length);
+                }
+            }
+
+            previousIndex = nextIndex;
+            activeMapPoint = mapPoints[nextIndex];
+            activeMapPoint.classList.add("is_auto_active");
+        };
+
+        mapPoints.forEach(point => {
+            point.addEventListener("mouseenter", () => point.classList.remove("is_auto_active"));
+        });
+
+        showRandomMapPoint();
+        window.setInterval(showRandomMapPoint, 1800);
+    }
 });
