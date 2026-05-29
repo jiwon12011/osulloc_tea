@@ -1,0 +1,327 @@
+@charset "UTF-8";
+
+/* ============================================================
+   OSULLOC TEA MUSEUM — Design Upgrade Layer (index)
+   비주얼 고급화 + 인터랙션/애니메이션 + 반응형 보강.
+   style.css 이후에 로드되어, 의도한 부분만 덮어씁니다.
+   추가(additive) 방식이라 제거 시 원본 그대로 복구됩니다.
+   ============================================================ */
+
+:root {
+    --c-cream: #F5EFE9;
+    --c-ink: #2A2017;
+    --c-green: #596038;
+    --c-green-deep: #474d2b;
+    --c-gold: #C9A86A;
+    --c-gold-soft: #E6C786;
+    --shadow-sm: 0 4px 14px rgba(42, 32, 23, 0.06);
+    --shadow-md: 0 14px 36px rgba(42, 32, 23, 0.12);
+    --shadow-lg: 0 26px 60px rgba(42, 32, 23, 0.18);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --radius: 14px;
+}
+
+html { scroll-behavior: smooth; }
+
+/* 접근성: 모션 최소화 사용자 존중 */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .u-reveal { opacity: 1 !important; transform: none !important; }
+    .mySwiper,
+    .mySwiper .swiper-slide-active img { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* 키보드 포커스 가시성 (접근성) */
+a:focus-visible,
+button:focus-visible {
+    outline: 2px solid var(--c-green);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* ── 공용 스크롤 등장 애니메이션 ─────────────────────────── */
+.u-reveal {
+    opacity: 0;
+    transform: translateY(42px);
+    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    transition-delay: var(--u-delay, 0s);
+    will-change: opacity, transform;
+}
+.u-reveal.u-in { opacity: 1; transform: none; }
+
+
+/* ── 데스크톱 스티키 헤더 (≥641px) ──────────────────────── */
+@media (min-width: 641px) {
+    .header {
+        position: sticky;
+        top: 0;
+        z-index: 900;
+        background: rgba(245, 239, 233, 0.72);
+        backdrop-filter: blur(12px) saturate(1.1);
+        -webkit-backdrop-filter: blur(12px) saturate(1.1);
+        transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
+    }
+    .header .header_top { transition: padding 0.35s var(--ease); }
+    .header .nav { transition: padding 0.35s var(--ease); }
+
+    .header.is_scrolled {
+        background: rgba(245, 239, 233, 0.9);
+        box-shadow: 0 6px 24px rgba(42, 32, 23, 0.08);
+    }
+    /* 스크롤 시 헤더가 살짝 컴팩트해짐 */
+    .header.is_scrolled .header_top { padding-top: 16px; }
+    .header.is_scrolled .nav { padding-top: 16px; padding-bottom: 10px; }
+}
+
+/* 언어 드롭다운이 헤더 블러 위로 오도록 */
+.lang_dropdown { z-index: 950; }
+
+
+/* ── 히어로(Swiper) ─────────────────────────────────────── */
+/* 로드 시 은은한 settle 인트로 */
+.mySwiper {
+    opacity: 0;
+    transform: scale(1.025);
+    transition: opacity 1s var(--ease), transform 1.4s var(--ease);
+}
+body.u-loaded .mySwiper { opacity: 1; transform: none; }
+
+/* 가독성을 위한 그라데이션 오버레이 + 깊이감 */
+.mySwiper .swiper-slide { position: relative; overflow: hidden; }
+.mySwiper .swiper-slide > img { position: relative; z-index: 0; }
+.mySwiper .swiper-slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg,
+            rgba(20, 16, 10, 0.30) 0%,
+            rgba(20, 16, 10, 0.05) 32%,
+            rgba(20, 16, 10, 0.05) 62%,
+            rgba(20, 16, 10, 0.48) 100%);
+    pointer-events: none;
+}
+.mySwiper .textbox { z-index: 2; }
+
+/* 활성 슬라이드 이미지 느린 줌(켄번스) */
+.mySwiper .swiper-slide-active > img {
+    animation: u-ken 6.5s ease-out both;
+}
+@keyframes u-ken {
+    from { transform: scale(1.09); }
+    to   { transform: scale(1); }
+}
+
+/* 히어로 타이포 다듬기 */
+.mySwiper .textbox .text1 {
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    opacity: 0.92;
+}
+.mySwiper .textbox .text2 { line-height: 1.42; }
+
+/* 스크롤 유도 인디케이터 (JS로 삽입) — 뷰포트 하단 고정, 스크롤 시 사라짐 */
+.u-scroll {
+    position: fixed;
+    left: 50%;
+    bottom: 26px;
+    transform: translateX(-50%);
+    z-index: 700;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+    color: var(--c-cream);
+    pointer-events: none;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+}
+.u-scroll.u-hide { opacity: 0; visibility: hidden; }
+.u-scroll span { font-size: 10px; letter-spacing: 0.32em; opacity: 0.85; }
+.u-scroll .u-mouse {
+    width: 22px;
+    height: 34px;
+    border: 1.5px solid rgba(245, 239, 233, 0.8);
+    border-radius: 12px;
+    position: relative;
+}
+.u-scroll .u-mouse::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    width: 3px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--c-cream);
+    transform: translateX(-50%);
+    animation: u-wheel 1.7s var(--ease) infinite;
+}
+@keyframes u-wheel {
+    0%   { opacity: 0; transform: translate(-50%, 0); }
+    30%  { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, 11px); }
+}
+
+/* 페이지네이션 점 살짝 키워 터치 편의 */
+.mySwiper .swiper-pagination { bottom: 18px; }
+
+
+/* ── content1 (제주 오리진) ─────────────────────────────── */
+.container .content1 .left img,
+.container .content1 .right img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+
+
+/* ── content2 (티 코스) 글래스 카드 ─────────────────────── */
+.content2 ul li {
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(245, 239, 233, 0.16);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.45s var(--ease), background 0.4s ease,
+                border-color 0.4s ease, box-shadow 0.4s ease;
+}
+.content2 ul li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--c-gold-soft), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.content2 ul li:hover {
+    transform: translateY(-6px);
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(245, 239, 233, 0.32);
+    box-shadow: 0 22px 46px rgba(0, 0, 0, 0.30);
+}
+.content2 ul li:hover::before { opacity: 1; }
+
+
+/* ── content3 (지도) ────────────────────────────────────── */
+.content3 .container .map {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+}
+/* 가이드 버튼을 알약형으로 + 호버 리프트 */
+.content3 .container .textbox .guidebox {
+    border-radius: 999px;
+    transition: background-color 0.4s ease, color 0.4s ease,
+                transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+}
+.content3 .container .textbox .guidebox:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* 지도 포인트: 은은한 점 + 활성 시 펄스 링 */
+.map_wrapper .point::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 11px;
+    margin: -5.5px 0 0 -5.5px;
+    border-radius: 50%;
+    background: rgba(42, 32, 23, 0.55);
+    box-shadow: 0 0 0 0 rgba(89, 96, 56, 0.5);
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+.map_wrapper .point:hover::after,
+.map_wrapper .point.is_auto_active::after {
+    background: var(--c-green);
+    transform: scale(1.15);
+    animation: u-ping 1.8s var(--ease) infinite;
+}
+@keyframes u-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(89, 96, 56, 0.45); }
+    70%  { box-shadow: 0 0 0 14px rgba(89, 96, 56, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(89, 96, 56, 0); }
+}
+
+
+/* ── content4 (뮤지엄 익스클루시브 상품) ────────────────── */
+/* 이미지 줌을 깔끔히 클리핑하기 위한 래퍼(JS 삽입) */
+.u-thumb {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
+}
+.u-thumb img {
+    display: block;
+    width: 100%;
+    transition: transform 0.6s var(--ease), filter 0.45s ease;
+    border-radius: 0;
+}
+.content4 .c4_shop a:hover .u-thumb img {
+    transform: scale(1.06);
+    filter: brightness(1.04) contrast(1.02);
+}
+/* 가격에 골드 포인트 */
+.content4 .c4_shop .shopbox a span {
+    color: var(--c-gold-soft);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+}
+.content4 .c4_shop .shopbox a h3 { transition: color 0.3s ease; }
+
+
+/* ── 맨 위로 버튼 (JS 삽입) ─────────────────────────────── */
+.u-top {
+    position: fixed;
+    right: 28px;
+    bottom: 28px;
+    z-index: 800;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(42, 32, 23, 0.15);
+    background: rgba(245, 239, 233, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--c-ink);
+    font-size: 20px;
+    line-height: 1;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    box-shadow: var(--shadow-sm);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease),
+                background 0.3s ease, box-shadow 0.3s ease;
+}
+.u-top.is-visible { opacity: 1; visibility: visible; transform: none; }
+.u-top:hover {
+    background: #fff;
+    box-shadow: var(--shadow-md);
+    transform: translateY(-3px);
+}
+
+
+/* ── 반응형 보강 ────────────────────────────────────────── */
+@media (max-width: 1024px) {
+    .u-scroll { bottom: 18px; }
+}
+@media (max-width: 640px) {
+    .u-scroll { display: none; }          /* 모바일에선 군더더기 제거 */
+    .u-top { right: 16px; bottom: 16px; width: 44px; height: 44px; font-size: 18px; }
+    .content2 ul li { border-radius: 14px; }
+    /* 모바일 켄번스/인트로는 과해 보이지 않게 약화 */
+    .mySwiper { transform: none; }
+    .mySwiper .swiper-slide-active > img { animation-duration: 5s; }
+}
