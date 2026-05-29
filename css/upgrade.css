@@ -167,6 +167,30 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 .mySwiper .swiper-pagination { bottom: 18px; }
 
 
+/* ── 서브페이지 히어로 인트로 (brand/product/cs/sub) ────── */
+.page_hero .page_hero_inner > * {
+    animation: u-fade-up 0.9s var(--ease) both;
+}
+.page_hero .page_hero_inner > *:nth-child(2) { animation-delay: 0.1s; }
+.page_hero .page_hero_inner > *:nth-child(3) { animation-delay: 0.2s; }
+.page_hero .page_hero_inner > *:nth-child(4) { animation-delay: 0.3s; }
+
+/* 서브 히어로 이미지 은은한 줌인 */
+.sub_hero figure img {
+    animation: u-ken 7s ease-out both;
+}
+
+@keyframes u-fade-up {
+    from { opacity: 0; transform: translateY(26px); }
+    to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page_hero .page_hero_inner > *,
+    .sub_hero figure img { animation: none !important; }
+}
+
+
 /* ── content1 (제주 오리진) ─────────────────────────────── */
 .container .content1 .left img,
 .container .content1 .right img {

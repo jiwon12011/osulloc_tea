@@ -36,6 +36,7 @@
             }
         }
 
+        // index (해당 셀렉터는 메인에서만 매칭됨)
         add(".content2 .teacourse", false);
         add(".content2 ul li", true);
         add(".content3 .map_wrapper", false);
@@ -43,6 +44,24 @@
         add(".content4 .c4_textbox", false);
         add(".content4 .c4_shop > a", false);
         add(".content4 .c4_shop .shopbox a", true);
+
+        // product (자체 reveal 없음)
+        add(".product_section_header", false);
+        add(".product_catalog .product_card", true);
+        add(".product_featured .highlight_item", true);
+        add(".best_rank_item", true);
+        add(".product_featured .product_featured_visual", false);
+
+        // cs / 고객센터 (자체 reveal 없음)
+        add(".cs_section_title", false);
+        add(".cs_info_card", true);
+        add(".faq_item", true);
+        add(".cs_field", true);
+
+        // login (자체 reveal 없음)
+        add(".auth_form_section.is_active", false);
+
+        // 모든 페이지 공통: 푸터
         add("footer .footer_box", false);
 
         if (reduceMotion || !("IntersectionObserver" in window)) {
