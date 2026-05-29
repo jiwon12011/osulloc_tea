@@ -167,6 +167,32 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 .mySwiper .swiper-pagination { bottom: 18px; }
 
 
+/* ── 서브페이지 탭 통합 후 섹션 정리 ────────────────────── */
+/* 탭을 없애고 한 페이지로 이어붙였을 때, 과한 여백을 정리하고
+   같은 배경의 연속 섹션은 얇은 구분선으로 깔끔하게 나눕니다. */
+
+/* sub_01(Program): sub_intro 들이 세로로 쌓일 때 간격 축소 + 구분선 */
+.sub_content .sub_intro {
+    margin: 0;
+    padding: 84px 0 90px;
+}
+.sub_content .sub_intro:first-child { padding-top: 64px; }
+.sub_content .sub_intro + .sub_intro {
+    border-top: 1px solid rgba(42, 32, 23, 0.10);
+}
+
+/* product: 전체 제품 → 베스트셀러 (둘 다 크림색) 사이 구분선 */
+.product_catalog + .product_catalog {
+    border-top: 1px solid rgba(42, 32, 23, 0.10);
+}
+
+/* community: 공지사항 → 뉴스&이벤트 (둘 다 크림색) 사이 구분선 */
+.community_notice + .community_notice {
+    border-top: 1px solid rgba(42, 32, 23, 0.10);
+    padding-top: 70px;
+}
+
+
 /* ── 서브페이지 히어로 인트로 (brand/product/cs/sub) ────── */
 .page_hero .page_hero_inner > * {
     animation: u-fade-up 0.9s var(--ease) both;

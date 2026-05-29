@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css?v=20260508a">
     <link rel="stylesheet" href="css/font.css">
-    <link rel="stylesheet" href="css/upgrade.css?v=20260529b">
+    <link rel="stylesheet" href="css/upgrade.css?v=20260529d">
     <script src="script/script.js?v=20260508a"></script>
-    <script src="script/upgrade.js?v=20260529b" defer></script>
+    <script src="script/upgrade.js?v=20260529d" defer></script>
 </head>
 
 <body>
@@ -59,17 +59,6 @@
             <h1 class="hero_en">OSULLOC MUSEUM EXCLUSIVE</h1>
             <p class="hero_desc">제주의 계절을 담은 티뮤지엄 전용 컬렉션<br>
                 오직 이곳에서 만나는 특별한 차를 소개합니다</p>
-        </div>
-    </div>
-
-    <div class="sub_content">
-        <div class="submenu" data-tab-group="product">
-            <ul>
-                <li class="on"><a href="#" data-tab-target="featured">피쳐드 제품</a></li>
-                <li><a href="#" data-tab-target="all">전체 제품</a></li>
-                <li><a href="#" data-tab-target="new">신제품</a></li>
-                <li><a href="#" data-tab-target="best">베스트셀러</a></li>
-            </ul>
         </div>
     </div>
 
@@ -123,17 +112,11 @@
     </div>
 
     <!-- 제품 카탈로그 그리드 -->
-    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="all" hidden>
+    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="all">
         <div class="inner">
             <div class="product_section_header">
                 <p>ALL PRODUCTS</p>
                 <h2>제주 티뮤지엄 <span>전체 제품</span></h2>
-            </div>
-            <div class="cat_tabs">
-                <button class="on">전체 보기</button>
-                <button>그린티</button>
-                <button>블렌디드 티</button>
-                <button>시즌 에디션</button>
             </div>
             <div class="product_grid">
                 <div class="product_card">
@@ -180,58 +163,7 @@
         </div>
     </div>
 
-    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="new" hidden>
-        <div class="inner">
-            <div class="product_section_header">
-                <p>NEW ARRIVALS</p>
-                <h2>제주의 계절을 담은 <span>신제품</span></h2>
-            </div>
-            <div class="product_grid">
-                <div class="product_card">
-                    <div class="card_img">
-                        <img src="img/shop_3.png" alt="제주 삼다 영귤티">
-                    </div>
-                    <div class="card_info">
-                        <span class="card_tag">시즌 블렌드</span>
-                        <h3>제주 삼다 영귤티</h3>
-                        <span class="card_price">11,000원</span>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="card_img">
-                        <img src="img/shop_4.png" alt="제주 난꽃향 그린티">
-                    </div>
-                    <div class="card_info">
-                        <span class="card_tag">그린티</span>
-                        <h3>제주 난꽃향 그린티</h3>
-                        <span class="card_price">16,500원</span>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="card_img">
-                        <img src="img/shop_2.png" alt="제주 동백꽃 티">
-                    </div>
-                    <div class="card_info">
-                        <span class="card_tag">플라워 블렌드</span>
-                        <h3>제주 동백꽃 티</h3>
-                        <span class="card_price">11,000원</span>
-                    </div>
-                </div>
-                <div class="product_card">
-                    <div class="card_img">
-                        <img src="img/shop_1.png" alt="시그니처 패키지">
-                    </div>
-                    <div class="card_info">
-                        <span class="card_tag">기프트</span>
-                        <h3>시그니처 패키지</h3>
-                        <span class="card_price">38,000원</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="best" hidden>
+    <div class="product_catalog tab_panel" data-tab-panel="product" data-tab-name="best">
         <div class="inner">
             <div class="product_section_header">
                 <p>BEST SELLER</p>
@@ -297,17 +229,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const tabBtns = document.querySelectorAll(".cat_tabs button");
-            tabBtns.forEach(btn => {
-                btn.addEventListener("click", () => {
-                    tabBtns.forEach(b => b.classList.remove("on"));
-                    btn.classList.add("on");
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>

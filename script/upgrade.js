@@ -61,6 +61,32 @@
         // login (자체 reveal 없음)
         add(".auth_form_section.is_active", false);
 
+        // brand (기존 reveal은 content1 대상이라 서브페이지에선 미작동 → 신규)
+        add(".brand_story .story_header", false);
+        add(".brand_story .val_item", true);
+        add(".brand_story .col_text", false);
+        add(".brand_mission .value_card", true);
+        add(".brand_history .section_label", false);
+        add(".brand_history .section_title", false);
+        add(".timeline_item", true);
+        add(".award_item", true);
+
+        // program / sub_01
+        add(".sub_intro .intro_text", false);
+        add(".sub_intro .intro_content", true);
+        add(".program_info_card", true);
+        add(".space_item", true);
+        add(".step_item", true);
+
+        // community
+        add(".notice_header", false);
+        add(".gallery_header", false);
+        add(".sns_header", false);
+        add(".notice_item", true);
+        add(".event_card", true);
+        add(".gallery_card", true);
+        add(".sns_tile", true);
+
         // 모든 페이지 공통: 푸터
         add("footer .footer_box", false);
 
