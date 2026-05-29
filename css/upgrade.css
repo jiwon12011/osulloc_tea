@@ -225,6 +225,18 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 }
 
 
+/* ── 이미지 모서리 둥글기 통일 (서브페이지 일관성) ──────── */
+/* 사이트 전반이 둥근 이미지인데 일부 서브 이미지만 각져 있어 맞춤 */
+.sub_content .sub_intro .intro_content > img,
+.space_flow .space_item img {
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+}
+.best_rank_item img {
+    border-radius: 10px;
+}
+
+
 /* ── content2 (티 코스) 글래스 카드 ─────────────────────── */
 .content2 ul li {
     border-radius: 16px;
