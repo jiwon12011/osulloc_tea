@@ -363,6 +363,82 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 }
 
 
+/* ── 섹션 사이드 내비게이션 (서브페이지, JS 삽입) ───────── */
+/* 평소엔 작은 점만 보이고, 현재 섹션은 채워진 점으로 표시.
+   점에 마우스를 올리면 섹션 이름이 나오고, 클릭하면 이동. */
+.u-spy {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 650;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s var(--ease), visibility 0.4s var(--ease);
+}
+.u-spy.is-ready { opacity: 1; visibility: visible; }
+.u-spy ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+.u-spy li { margin: 0; }
+.u-spy a {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    text-decoration: none;
+    height: 12px;
+}
+.u-spy-dot {
+    width: 8px;
+    height: 8px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: transparent;
+    border: 1.5px solid rgba(42, 32, 23, 0.30);
+    transition: transform 0.3s var(--ease), background 0.3s ease, border-color 0.3s ease;
+}
+.u-spy a:hover .u-spy-dot { border-color: var(--c-green); }
+.u-spy a.is-active .u-spy-dot {
+    background: var(--c-green);
+    border-color: var(--c-green);
+    transform: scale(1.4);
+}
+.u-spy-label {
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--c-ink);
+    background: rgba(245, 239, 233, 0.94);
+    padding: 5px 10px;
+    border-radius: 999px;
+    box-shadow: var(--shadow-sm);
+    opacity: 0;
+    transform: translateX(8px);
+    transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
+    pointer-events: none;
+}
+.u-spy a:hover .u-spy-label { opacity: 1; transform: none; }
+
+/* 다크/그린 배경 섹션 위에서는 점을 밝게 */
+.u-spy.on-dark .u-spy-dot { border-color: rgba(245, 239, 233, 0.55); }
+.u-spy.on-dark a:hover .u-spy-dot,
+.u-spy.on-dark a.is-active .u-spy-dot {
+    background: var(--c-cream);
+    border-color: var(--c-cream);
+}
+
+@media (max-width: 1024px) { .u-spy { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+    .u-spy-dot, .u-spy-label { transition: none; }
+}
+
+
 /* ── 반응형 보강 ────────────────────────────────────────── */
 @media (max-width: 1024px) {
     .u-scroll { bottom: 18px; }

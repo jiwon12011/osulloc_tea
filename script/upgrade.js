@@ -125,6 +125,67 @@
             document.body.appendChild(scrollInd);
         }
 
+        /* ── 5-1. 섹션 사이드 내비게이션 (서브페이지) ─────── */
+        var spySections = [];
+        var spyLinks = [];
+        var spyEl = null;
+        var panels = document.querySelectorAll("[data-tab-panel]");
+        var labelMap = {
+            course: "코스소개", guide: "프로그램 안내", space: "공간안내", reservation: "예약 가이드",
+            story: "브랜드 스토리", philosophy: "철학과 가치", history: "브랜드 히스토리", awards: "인증·수상",
+            featured: "피쳐드", all: "전체 제품", best: "베스트셀러",
+            notice: "공지사항", news: "뉴스·이벤트", reviews: "방문 후기", sns: "SNS 피드"
+        };
+        if (panels.length) {
+            panels.forEach(function (p) {
+                var name = p.getAttribute("data-tab-name");
+                var h2 = p.querySelector("h2");
+                var label = labelMap[name] || (h2 ? h2.textContent.trim().split("\n")[0] : "");
+                spySections.push({
+                    el: p,
+                    label: label,
+                    dark: p.classList.contains("community_gallery") || p.classList.contains("brand_mission")
+                });
+            });
+        } else if (document.querySelector(".cs_section")) {
+            var cs = document.querySelector(".cs_section");
+            var info = cs.querySelector(".cs_info");
+            if (info) spySections.push({ el: info, label: "연락처", dark: false });
+            cs.querySelectorAll(".cs_section_title").forEach(function (t) {
+                spySections.push({ el: t, label: t.textContent.trim(), dark: false });
+            });
+        }
+
+        if (spySections.length >= 2) {
+            spyEl = document.createElement("nav");
+            spyEl.className = "u-spy";
+            spyEl.setAttribute("aria-label", "섹션 바로가기");
+            var ul = document.createElement("ul");
+            spySections.forEach(function (s) {
+                var li = document.createElement("li");
+                var a = document.createElement("a");
+                a.href = "#";
+                a.setAttribute("aria-label", s.label);
+                var lab = document.createElement("span");
+                lab.className = "u-spy-label";
+                lab.textContent = s.label;
+                var dot = document.createElement("span");
+                dot.className = "u-spy-dot";
+                a.appendChild(lab);
+                a.appendChild(dot);
+                a.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    var y = s.el.getBoundingClientRect().top + window.scrollY - 90;
+                    window.scrollTo({ top: y, behavior: reduceMotion ? "auto" : "smooth" });
+                });
+                li.appendChild(a);
+                ul.appendChild(li);
+                spyLinks.push(a);
+            });
+            spyEl.appendChild(ul);
+            document.body.appendChild(spyEl);
+        }
+
         /* ── 5. 맨 위로 버튼 ──────────────────────────────── */
         var topBtn = document.createElement("button");
         topBtn.className = "u-top";
@@ -144,6 +205,17 @@
             window.requestAnimationFrame(function () {
                 topBtn.classList.toggle("is-visible", window.scrollY > 500);
                 if (scrollInd) scrollInd.classList.toggle("u-hide", window.scrollY > 300);
+                if (spySections.length && spyEl) {
+                    var firstTop = spySections[0].el.getBoundingClientRect().top + window.scrollY;
+                    spyEl.classList.toggle("is-ready", window.scrollY + window.innerHeight * 0.5 >= firstTop);
+                    var mark = window.scrollY + window.innerHeight * 0.35;
+                    var active = 0;
+                    for (var i = 0; i < spySections.length; i++) {
+                        if (spySections[i].el.getBoundingClientRect().top + window.scrollY <= mark) active = i;
+                    }
+                    spyLinks.forEach(function (a, i) { a.classList.toggle("is-active", i === active); });
+                    spyEl.classList.toggle("on-dark", !!spySections[active].dark);
+                }
                 ticking = false;
             });
         }
