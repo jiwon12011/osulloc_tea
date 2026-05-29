@@ -456,6 +456,17 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
     .u-scroll { bottom: 18px; }
 }
 @media (max-width: 640px) {
+    /* 모바일 그리드 누락 보정 ─ 원본에 모바일 규칙이 없어 깨지던 부분 */
+    /* 브랜드 '철학과 가치': 3단 flex가 안 접혀 글자가 한 자씩 끊김 → 세로 스택 */
+    .brand_mission .values_grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+    }
+    .brand_mission .values_grid .value_card { width: 100%; }
+    /* 커뮤니티 'SNS 피드': 4단 고정이라 썸네일이 너무 작아짐 → 2×2 */
+    .community_sns .sns_grid { grid-template-columns: repeat(2, 1fr); }
+
     .u-scroll { display: none; }          /* 모바일에선 군더더기 제거 */
     .u-top { right: 16px; bottom: 16px; width: 44px; height: 44px; font-size: 18px; }
     .content2 ul li { border-radius: 14px; }
