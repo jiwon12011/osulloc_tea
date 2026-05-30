@@ -120,8 +120,9 @@ margin-bottom: 30px; font-weight: 300;}
 .container .content1 .left img,
 .container .content1 .right img {
     opacity: 0;
-    transform: translateY(120px);
-    transition: all 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* ease-out보다 조금 더 쫀득한 느낌의 효과 */
+    transform: translateY(24px);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 이동폭·시간 축소로 덜컹임 완화 */
 }
 
 /* 활성화 상태 (변경 없음) */

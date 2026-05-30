@@ -55,8 +55,8 @@ button:focus-visible {
 /* ── 공용 스크롤 등장 애니메이션 ─────────────────────────── */
 .u-reveal {
     opacity: 0;
-    transform: translateY(42px);
-    transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
+    transform: translateY(18px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     transition-delay: var(--u-delay, 0s);
 }
 /* will-change는 등장 직전에만 JS로 부여하고, 끝나면 해제해
