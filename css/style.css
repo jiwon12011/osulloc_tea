@@ -143,7 +143,7 @@ margin-bottom: 30px; font-weight: 300;}
 
 
 
-.content2{background: url(../img/teacourse_bg.png) no-repeat center center; 
+.content2{background: url(../img/teacourse_bg.webp) no-repeat center center; 
     background-size: cover;
     width: 100%; min-height: 720px; height: auto;
     padding: 72px 40px 84px;
@@ -611,19 +611,19 @@ display: flex; flex-direction: column;
 /* Brand: 다크 브라운 */
 .page_hero_brand {
     background-color: #2A2017;
-    background-image: url("../img/page_hero_brand.png");
+    background-image: url("../img/page_hero_brand.webp");
     color: #F5EFE9;
 }
 /* Product: 세이지 그린 */
 .page_hero_product {
     background-color: #596038;
-    background-image: url("../img/page_hero_product.png");
+    background-image: url("../img/page_hero_product.webp");
     color: #F5EFE9;
 }
 /* Community: 번트 로즈 */
 .page_hero_community {
     background-color: #814A47;
-    background-image: url("../img/page_hero_community.png");
+    background-image: url("../img/page_hero_community.webp");
     color: #F5EFE9;
 }
 .page_hero_cs {

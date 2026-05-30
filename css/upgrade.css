@@ -505,3 +505,174 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
     .mySwiper { transform: none; }
     .mySwiper .swiper-slide-active > img { animation-duration: 5s; }
 }
+
+
+/* ════════════════════════════════════════════════════════════
+   디테일/마감 폴리시 (A) + 텍스처 (B)
+   기존 규칙 수정 없이 전부 추가만 합니다.
+   ════════════════════════════════════════════════════════════ */
+
+/* ── A-1) 푸터 고급화 ───────────────────────────────────── */
+/* 푸터 상단 골드 헤어라인: footer_container 위에 얇은 그라데이션 선.
+   레이아웃은 유지하고 윗쪽에 은은한 경계만 더합니다. */
+footer {
+    position: relative;
+}
+footer .footer_container {
+    position: relative;
+}
+footer .footer_container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 80px;
+    right: 80px;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(201, 168, 106, 0.45) 22%,
+            rgba(201, 168, 106, 0.55) 50%,
+            rgba(201, 168, 106, 0.45) 78%,
+            transparent 100%);
+    pointer-events: none;
+}
+
+/* 푸터 링크: 호버 시 그린으로 + 밑줄 슬라이드 (nav ::after 패턴과 동일 톤) */
+footer .textbox .topbox a {
+    position: relative;
+    color: var(--c-ink);
+    transition: color 0.32s var(--ease);
+}
+footer .textbox .topbox a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 1px;
+    background: var(--c-green);
+    transform: scaleX(0);
+    transform-origin: left center;
+    transition: transform 0.4s var(--ease);
+}
+footer .textbox .topbox a:hover {
+    color: var(--c-green);
+}
+footer .textbox .topbox a:hover::after {
+    transform: scaleX(1);
+}
+
+
+/* ── A-2) 영문 섹션 라벨 골드 디바이더 ──────────────────── */
+/* 자간 넓은 대문자 영문 라벨 아래 짧은 골드 라인으로 포인트.
+   밝은(크림) 배경엔 --c-gold, 다크/그린 배경엔 --c-gold-soft. */
+
+/* 공통 디바이더 형태 (가운데 정렬 라벨용) */
+.content3 .container .textbox span,
+.brand_story .story_header p,
+.brand_history .section_label,
+.product_section_header p,
+.community_gallery .gallery_header p,
+.community_sns .sns_header p {
+    /* 라벨 아래 여백을 살짝 확보해 디바이더가 들어갈 자리 마련 */
+    padding-bottom: 18px;
+}
+
+.content3 .container .textbox span::after,
+.brand_story .story_header p::after,
+.brand_history .section_label::after,
+.product_section_header p::after,
+.community_gallery .gallery_header p::after,
+.community_sns .sns_header p::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 12px auto 0;
+    border-radius: 1px;
+    background: var(--c-gold);
+}
+
+/* content3 텍스트박스는 flex+gap이라 라벨이 블록이 아님 → 인라인블록화 */
+.content3 .container .textbox span {
+    display: inline-block;
+}
+
+/* 다크/그린 배경 위 라벨 (밝은 골드) */
+.content2 .teacourse,
+.content4 .c4_textbox span,
+.brand_mission .inner > p {
+    position: relative;
+}
+.content4 .c4_textbox span::after,
+.brand_mission .inner > p::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 14px auto 0;
+    border-radius: 1px;
+    background: var(--c-gold-soft);
+    opacity: 0.9;
+}
+/* content2: 영문 라벨(h2) 위에 디바이더 — 그린 코스 섹션 헤더 강조 */
+.content2 .teacourse::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 2px;
+    margin: 0 auto 18px;
+    border-radius: 1px;
+    background: var(--c-gold-soft);
+    opacity: 0.9;
+}
+
+
+/* ── A-3) 화살표 텍스트 링크 마이크로 인터랙션 ──────────── */
+/* sub_01 '지금 예약하기' — 호버 시 화살표가 살짝 우측 이동.
+   (.more_link 는 style.css에 이미 gap 호버가 있어 건드리지 않음) */
+.sub_content .sub_intro .intro_text a img {
+    display: inline-block;
+    transition: transform 0.35s var(--ease);
+    vertical-align: middle;
+}
+.sub_content .sub_intro .intro_text a:hover img {
+    transform: translateX(4px);
+}
+
+
+/* ── B-1) 크림색 배경 섹션의 은은한 텍스처(비네팅) ─────── */
+/* body(크림) 위에 거의 보이지 않는 중앙 발광 + 가장자리 음영.
+   콘텐츠보다 뒤(z-index:-1)에 고정 레이어로 깔아 가독성 영향 없음. */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 90% at 50% 0%,
+            rgba(255, 255, 255, 0.05) 0%,
+            transparent 55%),
+        radial-gradient(130% 120% at 50% 100%,
+            rgba(42, 32, 23, 0.045) 0%,
+            transparent 60%);
+}
+
+/* 푸터에도 동일한 결의 미세한 깊이감(아주 옅은 중앙 발광) */
+footer {
+    background:
+        radial-gradient(90% 140% at 50% 0%,
+            rgba(255, 255, 255, 0.04) 0%,
+            transparent 60%);
+}
+
+
+/* ── 접근성: 모션 최소화 시 새 인터랙션 비활성화 ───────── */
+@media (prefers-reduced-motion: reduce) {
+    footer .textbox .topbox a,
+    footer .textbox .topbox a::after,
+    .sub_content .sub_intro .intro_text a img {
+        transition: none !important;
+    }
+}
