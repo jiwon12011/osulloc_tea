@@ -45,8 +45,10 @@ button:focus-visible {
     transform: translateY(42px);
     transition: opacity 0.9s var(--ease), transform 0.9s var(--ease);
     transition-delay: var(--u-delay, 0s);
-    will-change: opacity, transform;
 }
+/* will-change는 등장 직전에만 JS로 부여하고, 끝나면 해제해
+   다수 요소에 영구 합성 레이어가 쌓여 스크롤이 무거워지는 것을 방지 */
+.u-reveal.u-anim { will-change: opacity, transform; }
 .u-reveal.u-in { opacity: 1; transform: none; }
 
 
@@ -57,8 +59,9 @@ button:focus-visible {
         top: 0;
         z-index: 900;
         background: rgba(245, 239, 233, 0.72);
-        backdrop-filter: blur(12px) saturate(1.1);
-        -webkit-backdrop-filter: blur(12px) saturate(1.1);
+        /* blur 반경을 낮춰 스크롤 중 헤더 리페인트 비용 감소(시각효과 유지) */
+        backdrop-filter: blur(8px) saturate(1.1);
+        -webkit-backdrop-filter: blur(8px) saturate(1.1);
         transition: background 0.35s var(--ease), box-shadow 0.35s var(--ease);
     }
     .header .header_top { transition: padding 0.35s var(--ease); }

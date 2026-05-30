@@ -62,8 +62,23 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         };
 
+        let headerScrolled = null;
+        const applyHeaderShadow = () => {
+            const next = window.scrollY > 8;
+            // 상태가 바뀔 때만 클래스 토글 → backdrop-filter 리페인트 비용 최소화
+            if (next !== headerScrolled) {
+                headerScrolled = next;
+                header.classList.toggle("is_scrolled", next);
+            }
+        };
+        let headerTicking = false;
         const updateHeaderShadow = () => {
-            header.classList.toggle("is_scrolled", window.scrollY > 8);
+            if (headerTicking) return;
+            headerTicking = true;
+            window.requestAnimationFrame(() => {
+                applyHeaderShadow();
+                headerTicking = false;
+            });
         };
 
         menuButton.addEventListener("click", event => {

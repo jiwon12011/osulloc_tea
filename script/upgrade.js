@@ -96,8 +96,14 @@
             var io = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add("u-in");
-                        io.unobserve(entry.target);
+                        var t = entry.target;
+                        // 합성 레이어는 애니메이션 동안만 유지하고 끝나면 해제
+                        t.classList.add("u-anim", "u-in");
+                        t.addEventListener("transitionend", function te() {
+                            t.classList.remove("u-anim");
+                            t.removeEventListener("transitionend", te);
+                        });
+                        io.unobserve(t);
                     }
                 });
             }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });

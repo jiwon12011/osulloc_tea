@@ -278,12 +278,10 @@
 
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    // 화면에 content1 섹션이 보이기 시작하면
+                    // 화면에 content1 섹션이 보이기 시작하면 한 번만 실행
                     if (entry.isIntersecting) {
                         entry.target.classList.add('show'); // 'show' 클래스를 붙여줍니다.
-                    } else {
-                        // 다시 스크롤을 올렸을 때 효과를 또 보고 싶다면 아래 주석을 해제하세요!
-                        entry.target.classList.remove('show');
+                        observer.unobserve(entry.target); // 반복 트리거 방지
                     }
                 });
             }, { threshold: 0.2 }); // 섹션의 20%가 보일 때 실행
