@@ -313,6 +313,18 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
+/* 텍스트를 버튼 정중앙에, 화살표는 오른쪽에 떨어뜨려 배치
+   (기존 flex 중앙정렬은 [텍스트+화살표] 묶음 기준이라 텍스트가 좌측으로 쏠려 보임) */
+.content3 .container .textbox .guidebox a {
+    position: relative;
+    gap: 0;
+}
+.content3 .container .textbox .guidebox a img {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
 
 /* 지도 포인트: 은은한 점 + 활성 시 펄스 링 */
 .map_wrapper .point::after {
