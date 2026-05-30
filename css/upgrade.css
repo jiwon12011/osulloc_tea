@@ -23,6 +23,17 @@
 
 html { scroll-behavior: smooth; }
 
+/* 세로 스크롤바 숨김(스크롤 기능은 유지) */
+html {
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* 구형 Edge/IE */
+}
+html::-webkit-scrollbar {         /* Chrome/Safari/Edge */
+    width: 0;
+    height: 0;
+    display: none;
+}
+
 /* 접근성: 모션 최소화 사용자 존중 */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
