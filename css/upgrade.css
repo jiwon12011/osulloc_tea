@@ -313,17 +313,6 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
-/* 고정 200px 폭이라 텍스트(132px)와 화살표가 붙어 답답해 보임 →
-   폭을 콘텐츠 기준으로 늘리고 좌우 패딩·간격을 넉넉히 줘 균형 잡음 */
-.content3 .container .textbox .guidebox {
-    width: auto;
-    min-width: 200px;
-    padding: 0 28px;
-    gap: 12px;
-}
-.content3 .container .textbox .guidebox a {
-    gap: 12px;
-}
 
 /* 지도 포인트: 은은한 점 + 활성 시 펄스 링 */
 .map_wrapper .point::after {
@@ -584,72 +573,6 @@ footer .textbox .topbox a:hover {
 }
 footer .textbox .topbox a:hover::after {
     transform: scaleX(1);
-}
-
-
-/* ── A-2) 영문 섹션 라벨 골드 디바이더 ──────────────────── */
-/* 자간 넓은 대문자 영문 라벨 아래 짧은 골드 라인으로 포인트.
-   밝은(크림) 배경엔 --c-gold, 다크/그린 배경엔 --c-gold-soft. */
-
-/* 공통 디바이더 형태 (가운데 정렬 라벨용) */
-.content3 .container .textbox span,
-.brand_story .story_header p,
-.brand_history .section_label,
-.product_section_header p,
-.community_gallery .gallery_header p,
-.community_sns .sns_header p {
-    /* 라벨 아래 여백을 살짝 확보해 디바이더가 들어갈 자리 마련 */
-    padding-bottom: 18px;
-}
-
-.content3 .container .textbox > span::after,
-.brand_story .story_header p::after,
-.brand_history .section_label::after,
-.product_section_header p::after,
-.community_gallery .gallery_header p::after,
-.community_sns .sns_header p::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    margin: 12px auto 0;
-    border-radius: 1px;
-    background: var(--c-gold);
-}
-
-/* 영문 라벨(.textbox 직계 span: TEA MUSEUM MAP)만 인라인블록화.
-   가이드 버튼 안의 span(.guidebox span)은 제외 → 정렬 유지 */
-.content3 .container .textbox > span {
-    display: inline-block;
-}
-
-/* 다크/그린 배경 위 라벨 (밝은 골드) */
-.content2 .teacourse,
-.content4 .c4_textbox span,
-.brand_mission .inner > p {
-    position: relative;
-}
-.content4 .c4_textbox span::after,
-.brand_mission .inner > p::after {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    margin: 14px auto 0;
-    border-radius: 1px;
-    background: var(--c-gold-soft);
-    opacity: 0.9;
-}
-/* content2: 영문 라벨(h2) 위에 디바이더 — 그린 코스 섹션 헤더 강조 */
-.content2 .teacourse::before {
-    content: "";
-    display: block;
-    width: 40px;
-    height: 2px;
-    margin: 0 auto 18px;
-    border-radius: 1px;
-    background: var(--c-gold-soft);
-    opacity: 0.9;
 }
 
 
