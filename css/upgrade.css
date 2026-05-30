@@ -210,26 +210,39 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 
 
 /* ── 서브페이지 히어로 인트로 (brand/product/cs/sub) ────── */
+/* 서브페이지는 정적인 느낌 선호 → 이동/줌 없이 아주 짧은 페이드만 */
 .page_hero .page_hero_inner > * {
-    animation: u-fade-up 0.9s var(--ease) both;
+    animation: u-fade-in 0.5s var(--ease) both;
 }
-.page_hero .page_hero_inner > *:nth-child(2) { animation-delay: 0.1s; }
-.page_hero .page_hero_inner > *:nth-child(3) { animation-delay: 0.2s; }
-.page_hero .page_hero_inner > *:nth-child(4) { animation-delay: 0.3s; }
 
-/* 서브 히어로 이미지 은은한 줌인 */
+/* 서브 히어로 이미지: 줌인 제거(정적) */
 .sub_hero figure img {
-    animation: u-ken 7s ease-out both;
+    animation: none;
 }
 
-@keyframes u-fade-up {
-    from { opacity: 0; transform: translateY(26px); }
-    to   { opacity: 1; transform: none; }
+@keyframes u-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
     .page_hero .page_hero_inner > *,
     .sub_hero figure img { animation: none !important; }
+}
+
+/* ── 서브페이지 본문 등장 모션 약화 ─────────────────────── */
+/* 서브페이지(.page_hero 또는 .sub_hero 보유)에서는 본문 .u-reveal의
+   위로 솟는 이동을 없애고 짧은 페이드만 남겨 정적인 인상을 줍니다.
+   메인(index)에는 .page_hero/.sub_hero가 없어 영향받지 않습니다. */
+.page_hero ~ * .u-reveal,
+.sub_hero ~ * .u-reveal {
+    transform: none;
+    transition: opacity 0.5s var(--ease);
+    transition-delay: 0s;
+}
+.page_hero ~ * .u-reveal.u-in,
+.sub_hero ~ * .u-reveal.u-in {
+    transform: none;
 }
 
 
@@ -578,7 +591,7 @@ footer .textbox .topbox a:hover::after {
     padding-bottom: 18px;
 }
 
-.content3 .container .textbox span::after,
+.content3 .container .textbox > span::after,
 .brand_story .story_header p::after,
 .brand_history .section_label::after,
 .product_section_header p::after,
@@ -593,8 +606,9 @@ footer .textbox .topbox a:hover::after {
     background: var(--c-gold);
 }
 
-/* content3 텍스트박스는 flex+gap이라 라벨이 블록이 아님 → 인라인블록화 */
-.content3 .container .textbox span {
+/* 영문 라벨(.textbox 직계 span: TEA MUSEUM MAP)만 인라인블록화.
+   가이드 버튼 안의 span(.guidebox span)은 제외 → 정렬 유지 */
+.content3 .container .textbox > span {
     display: inline-block;
 }
 
