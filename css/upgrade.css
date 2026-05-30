@@ -243,9 +243,7 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 /* ── content2 (티 코스) 글래스 카드 ─────────────────────── */
 .content2 ul li {
     border-radius: 16px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(245, 239, 233, 0.16);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
     position: relative;
@@ -267,7 +265,7 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
 }
 .content2 ul li:hover {
     transform: translateY(-6px);
-    background: rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.18);
     border-color: rgba(245, 239, 233, 0.32);
     box-shadow: 0 22px 46px rgba(0, 0, 0, 0.30);
 }
@@ -301,19 +299,36 @@ body.u-loaded .mySwiper { opacity: 1; transform: none; }
     margin: -5.5px 0 0 -5.5px;
     border-radius: 50%;
     background: rgba(42, 32, 23, 0.55);
-    box-shadow: 0 0 0 0 rgba(89, 96, 56, 0.5);
     transition: background 0.3s ease, transform 0.3s ease;
+}
+/* 펄스 링: box-shadow가 아닌 transform/opacity로 애니메이션(컴포지터 처리, 리페인트 없음) */
+.map_wrapper .point::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 11px;
+    height: 11px;
+    margin: -5.5px 0 0 -5.5px;
+    border-radius: 50%;
+    background: rgba(89, 96, 56, 0.45);
+    opacity: 0;
+    transform: scale(1);
+    pointer-events: none;
+    will-change: transform, opacity;
 }
 .map_wrapper .point:hover::after,
 .map_wrapper .point.is_auto_active::after {
     background: var(--c-green);
     transform: scale(1.15);
+}
+.map_wrapper .point:hover::before,
+.map_wrapper .point.is_auto_active::before {
     animation: u-ping 1.8s var(--ease) infinite;
 }
 @keyframes u-ping {
-    0%   { box-shadow: 0 0 0 0 rgba(89, 96, 56, 0.45); }
-    70%  { box-shadow: 0 0 0 14px rgba(89, 96, 56, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(89, 96, 56, 0); }
+    from { transform: scale(1);   opacity: 0.5; }
+    to   { transform: scale(3);   opacity: 0;   }
 }
 
 
